@@ -103,7 +103,7 @@ class PicoInfo(CtypesEnum):
 
 
 # load the shared library
-lib_path = "libs/usbpt104.dll"
+lib_path = "libs\\usbpt104.dll"
 libusbpt104 = cdll.LoadLibrary(lib_path)
 
 # define function argument types
