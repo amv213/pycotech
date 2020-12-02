@@ -1,4 +1,5 @@
 import re
+import sys
 import struct
 import logging
 import pandas as pd
@@ -9,7 +10,38 @@ from typing import Union, Dict
 logger = logging.getLogger(__name__)
 
 
-def read_pico_txt(fn: Union[str, Path]) -> pd.DataFrame:
+def fetch_metadata(fn: Union[str, Path]) -> str:
+    """Extracts metadata information from a .PLW file.
+
+    Args:
+        fn: path to the .PLW file to parse.
+
+    Returns:
+        metadata associated with data contained in the .PLW file,
+        as a single string.
+    """
+
+    metadata_bytes = 37714  # (can check opening .PLW in hex editor)
+
+    try:
+
+        # Open as binary stream
+        with open(fn, "rb") as f:
+
+            # go to start of metadata (metadata is at the end of the file)
+            f.seek(-metadata_bytes, 2)
+
+            # Read in binary chunk and decode
+            metadata = f.read().decode('cp437')
+
+    except FileNotFoundError as e:
+        logger.exception("Could not find .PLW file")
+        sys.exit()
+
+    return metadata
+
+
+def read_txt(fn: Union[str, Path]) -> pd.DataFrame:
     """Saves contents of a PicoLog PLW Player .TXT file into a properly
     formatted dataframe.
 
@@ -23,6 +55,8 @@ def read_pico_txt(fn: Union[str, Path]) -> pd.DataFrame:
         index:      None (enumeration of entries)
         columns:    `<channel_name>`, ... x num_channels
     """
+
+    # TODO: check input file is text
 
     # use cp437 decoding or similar to make it work nicely
     df = pd.read_csv(fn, delimiter='\t', encoding='cp437', dtype='unicode',
@@ -41,7 +75,7 @@ def read_pico_txt(fn: Union[str, Path]) -> pd.DataFrame:
     return df
 
 
-def read_pico_plw(fn: Union[str, Path]) -> pd.DataFrame:
+def read_plw(fn: Union[str, Path]) -> pd.DataFrame:
     """Saves contents of a PicoLog PLW Player .PLW file into a properly
     formatted dataframe.
 
@@ -56,39 +90,35 @@ def read_pico_plw(fn: Union[str, Path]) -> pd.DataFrame:
         columns:    `<channel_name>`, ... x num_channels
     """
 
+    # TODO: check file is .PLW
+
     # Try opening file
     try:
 
+        # Extract metadata
+        metadata = fetch_metadata(fn)
+
+        # Now can use regex to extract any wanted metadata:
+
+        # Number of acquisition channels
+        num_channels = re.findall(r'NoOfParameters=([0-9]+)', metadata)
+        num_channels = int(num_channels[0])
+
+        # Name of acquisition channels
+        channels = re.findall(r'Name=(\w+)', metadata)
+        # `Names` are not unique in metadata, so only take from end
+        channels = channels[-num_channels:]
+
+        column_labels = ['Time'] + channels
+
         # Open as binary stream
         with open(fn, "rb") as f:
-
-            # bytes (can check with hex editor and open PLW file)
-            metadata_length = 37714
-
-            f.seek(-metadata_length, 2)  # go to start of metadata
-            metadata = f.read().decode('cp437')
-
-            # Now can use regex to extract any wanted metadata:
-
-            # Number of acquisition channels
-            num_channels = re.findall(r'NoOfParameters=([0-9]+)', metadata)
-            num_channels = int(num_channels[0])
-
-            # Name of acquisition channels
-            channels = re.findall(r'Name=(\w+)', metadata)
-            # `Names` are not unique in metadata, so only take from end
-            channels = channels[-num_channels:]
-
-            column_labels = ['Time'] + channels
-
-            # ----
 
             header_length = 1684  # bytes (can check with hex editor)
             f.seek(header_length)  # skip header and go to start of data
 
             num_fields = 1 + num_channels
-            num_bytes_float = 4  # 32 bit float
-            row_size = num_fields * num_bytes_float
+            row_size = num_fields * 4  # Each field is a 32 bit float
 
             rows = []
             idx = 0
@@ -120,7 +150,7 @@ def read_pico_plw(fn: Union[str, Path]) -> pd.DataFrame:
         df = df.set_index('Time').reset_index(drop=True)
 
     except FileNotFoundError as e:
-        logger.warning(f"Could not find .PLW file: {e}")
+        logger.exception("Could not find .PLW file")
         df = pd.DataFrame()
 
     return df
@@ -171,38 +201,23 @@ def map_channels(fn: Union[str, Path]) -> Dict[str, str]:
         the device they are associated to.
     """
 
-    # Try opening file
-    try:
+    metadata = fetch_metadata(fn)
 
-        # Open as binary stream
-        with open(fn, "rb") as f:
+    # Now can use regex to extract any wanted metadata:
 
-            # bytes (can check with hex editor and open PLW file)
-            metadata_length = 37714
+    # Number of acquisition channels
+    num_channels = re.findall(r'NoOfParameters=([0-9]+)', metadata)
+    num_channels = int(num_channels[0])
 
-            f.seek(-metadata_length, 2)  # go to start of metadata
-            metadata = f.read().decode('cp437')
+    # Name of acquisition channels
+    channels = re.findall(r'Name=(\w+)', metadata)
+    # `Names` are not unique in metadata, so only take from end
+    channels = channels[-num_channels:]
 
-            # Now can use regex to extract any wanted metadata:
+    # Label of acquisition devices
+    devices = re.findall(r'Serial=([\w/]+)', metadata)
 
-            # Number of acquisition channels
-            num_channels = re.findall(r'NoOfParameters=([0-9]+)', metadata)
-            num_channels = int(num_channels[0])
-
-            # Name of acquisition channels
-            channels = re.findall(r'Name=(\w+)', metadata)
-            # `Names` are not unique in metadata, so only take from end
-            channels = channels[-num_channels:]
-
-            # Label of acquisition devices
-            devices = re.findall(r'Serial=([\w/]+)', metadata)
-
-            stumps = pd.unique([x[0] + '*' for x in channels])
-            chs_to_serial = {
-                key: value for (key, value) in zip(stumps, devices)}
-
-    except FileNotFoundError as e:
-        logger.warning(f"Could not find .PLW file: {e}")
-        chs_to_serial = {}
+    stumps = pd.unique([x[0] + '*' for x in channels])
+    chs_to_serial = {key: value for (key, value) in zip(stumps, devices)}
 
     return chs_to_serial
