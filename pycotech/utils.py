@@ -3,7 +3,7 @@ import struct
 import logging
 import pandas as pd
 from pathlib import Path
-from typing import Union
+from typing import Union, Dict
 
 # Spawn module-level logger
 logger = logging.getLogger(__name__)
@@ -78,9 +78,6 @@ def read_pico_plw(fn: Union[str, Path]) -> pd.DataFrame:
             channels = re.findall(r'Name=(\w+)', metadata)
             # `Names` are not unique in metadata, so only take from end
             channels = channels[-num_channels:]
-
-            # Label of acquisition devices
-            devices = re.findall(r'Serial=(\w+)', metadata)
 
             column_labels = ['Time'] + channels
 
@@ -162,4 +159,50 @@ def to_pico_stream(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-# TODO: add utility function parsing PLW metadata to build `devices` dict
+def map_channels(fn: Union[str, Path]) -> Dict[str, str]:
+    """Parses metadata in the .PLW file to build mapping between channel
+    labels and name of corresponding acquisition device.
+
+    Args:
+        fn: path to the .PLW file to parse.
+
+    Returns:
+        dictionary mapping acquisition channel label stumps (X*) to the id of
+        the device they are associated to.
+    """
+
+    # Try opening file
+    try:
+
+        # Open as binary stream
+        with open(fn, "rb") as f:
+
+            # bytes (can check with hex editor and open PLW file)
+            metadata_length = 37714
+
+            f.seek(-metadata_length, 2)  # go to start of metadata
+            metadata = f.read().decode('cp437')
+
+            # Now can use regex to extract any wanted metadata:
+
+            # Number of acquisition channels
+            num_channels = re.findall(r'NoOfParameters=([0-9]+)', metadata)
+            num_channels = int(num_channels[0])
+
+            # Name of acquisition channels
+            channels = re.findall(r'Name=(\w+)', metadata)
+            # `Names` are not unique in metadata, so only take from end
+            channels = channels[-num_channels:]
+
+            # Label of acquisition devices
+            devices = re.findall(r'Serial=([\w/]+)', metadata)
+
+            stumps = pd.unique([x[0] + '*' for x in channels])
+            chs_to_serial = {
+                key: value for (key, value) in zip(stumps, devices)}
+
+    except FileNotFoundError as e:
+        logger.warning(f"Could not find .PLW file: {e}")
+        chs_to_serial = {}
+
+    return chs_to_serial
