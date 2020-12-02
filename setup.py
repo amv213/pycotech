@@ -26,6 +26,7 @@ setuptools.setup(
     python_requires='>=3.8',
     install_requires=[
     ],
+    include_package_data=True,
 )
 
 # to build the package run the following:
