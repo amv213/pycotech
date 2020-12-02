@@ -1,0 +1,663 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pycotech.loggers &#8212; pycotech Documentation</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/twemoji.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
+    <script src="../../_static/twemoji.js"></script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">pycotech Documentation</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Welcome to pycotech’s documentation!
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  MAIN DOCS
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../documentation.html">
+   Documentation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../modules.html">
+     Modules
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pycotech.html">
+       pycotech package
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://gitlab.com/amv213/pycotech"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://gitlab.com/amv213/pycotech/issues/new?title=Issue%20on%20page%20%2F_modules/pycotech/loggers.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <h1>Source code for pycotech.loggers</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot; A Wrapper around the usbpt104 library from Pico for the Pico PT-104A RTD</span>
+<span class="sd">DATA Acquisition Module</span>
+
+<span class="sd">It also works for the Omega PT-104A.</span>
+
+<span class="sd">Based on Code from:</span>
+<span class="sd">https://www.picotech.com/support/topic27941.html</span>
+<span class="sd">https://www.picotech.com/support/topic31981.html?sid=48264e01d90ccb6a8a72240a5d024ea6</span>
+
+<span class="sd">Drivers for Windows can be found at:</span>
+<span class="sd">https://www.picotech.com/downloads &gt; PicoLog DataLoggers &gt; PT-104 &gt; Software</span>
+<span class="sd">&gt; PicoSDK 10.6.13 (64-bit)</span>
+<span class="sd">they should get installed in (Windows 10)</span>
+<span class="sd">C:\\Program Files\\Pico Technology\\SDK\\lib then copy usbpt104.dll to</span>
+<span class="sd">current  working directory</span>
+
+<span class="sd">The API documentation:</span>
+<span class="sd">https://www.picotech.com/download/manuals/usb-pt104-rtd-data-logger-programmers-guide.pdf</span>
+
+<span class="sd">Example::</span>
+
+<span class="sd">    from PT104 import PT104, Channels, DataTypes, Wires</span>
+<span class="sd">    unit = PT104()</span>
+<span class="sd">    unit.connect(&#39;AY429/026&#39;)</span>
+<span class="sd">    unit.set_channel(Channels.CHANNEL_1, DataTypes.PT100, Wires.WIRES_4)</span>
+<span class="sd">    value = unit.get_value_channel_1</span>
+<span class="sd">    if value:</span>
+<span class="sd">        print(&#39;CH1: %1.3f&#39;%value)</span>
+<span class="sd">    unit.disconnect()</span>
+
+<span class="sd">Tweaked for windows by:</span>
+<span class="sd">    Alvise Vianello</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Martin Schröder&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2018, Technische Universität Berlin&quot;</span>
+<span class="n">__credits__</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPLv3&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.0.0&quot;</span>
+<span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Martin Schröder&quot;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;m.schroeder@tu-berlin.de&quot;</span>
+<span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Beta&quot;</span>
+<span class="n">__docformat__</span> <span class="o">=</span> <span class="s1">&#39;reStructuredText&#39;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">ctypes</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">IntEnum</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Spawn module-level logger</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="CtypesEnum"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.CtypesEnum">[docs]</a><span class="k">class</span> <span class="nc">CtypesEnum</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+<div class="viewcode-block" id="CtypesEnum.from_param"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.CtypesEnum.from_param">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_param</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Channels"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.Channels">[docs]</a><span class="k">class</span> <span class="nc">Channels</span><span class="p">(</span><span class="n">CtypesEnum</span><span class="p">):</span>
+    <span class="n">CHANNEL_1</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">CHANNEL_2</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">CHANNEL_3</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">CHANNEL_4</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">CHANNEL_5</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">CHANNEL_6</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">CHANNEL_7</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">CHANNEL_8</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">MAX_CHANNELS</span> <span class="o">=</span> <span class="n">CHANNEL_8</span></div>
+
+
+<div class="viewcode-block" id="Wires"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.Wires">[docs]</a><span class="k">class</span> <span class="nc">Wires</span><span class="p">(</span><span class="n">CtypesEnum</span><span class="p">):</span>
+    <span class="n">WIRES_2</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">WIRES_3</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">WIRES_4</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">MIN_WIRES</span> <span class="o">=</span> <span class="n">WIRES_2</span>
+    <span class="n">MAX_WIRES</span> <span class="o">=</span> <span class="n">WIRES_4</span></div>
+
+
+<div class="viewcode-block" id="DataTypes"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.DataTypes">[docs]</a><span class="k">class</span> <span class="nc">DataTypes</span><span class="p">(</span><span class="n">CtypesEnum</span><span class="p">):</span>
+    <span class="n">OFF</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">PT100</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">PT1000</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">RESISTANCE_TO_375R</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">RESISTANCE_TO_10K</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">DIFFERENTIAL_TO_115MV</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">DIFFERENTIAL_TO_2500MV</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">SINGLE_ENDED_TO_115MV</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">SINGLE_ENDED_TO_2500MV</span> <span class="o">=</span> <span class="mi">8</span></div>
+
+
+<div class="viewcode-block" id="CommunicationType"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.CommunicationType">[docs]</a><span class="k">class</span> <span class="nc">CommunicationType</span><span class="p">(</span><span class="n">CtypesEnum</span><span class="p">):</span>
+    <span class="n">CT_USB</span> <span class="o">=</span> <span class="mh">0x00000001</span>
+    <span class="n">CT_ETHERNET</span> <span class="o">=</span> <span class="mh">0x00000002</span>
+    <span class="n">CT_ALL</span> <span class="o">=</span> <span class="mh">0xFFFFFFFF</span></div>
+
+
+<div class="viewcode-block" id="PicoInfo"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.PicoInfo">[docs]</a><span class="k">class</span> <span class="nc">PicoInfo</span><span class="p">(</span><span class="n">CtypesEnum</span><span class="p">):</span>
+    <span class="n">PICO_DRIVER_VERSION</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">PICO_USB_VERSION</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">PICO_HARDWARE_VERSION</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">PICO_VARIANT_INFO</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">PICO_BATCH_AND_SERIAL</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">PICO_CAL_DATE</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">PICO_KERNEL_DRIVER_VERSION</span> <span class="o">=</span> <span class="mi">6</span></div>
+
+
+<span class="c1"># load the shared library</span>
+<span class="n">lib_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;libs&#39;</span> <span class="o">/</span> <span class="s1">&#39;usbpt104.dll&#39;</span>
+<span class="n">lib_path</span> <span class="o">=</span> <span class="n">lib_path</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span>
+<span class="n">libusbpt104</span> <span class="o">=</span> <span class="n">cdll</span><span class="o">.</span><span class="n">LoadLibrary</span><span class="p">(</span><span class="n">lib_path</span><span class="p">)</span>
+
+<span class="c1"># define function argument types</span>
+<span class="c1"># Close the port (do this each time you finish using the device!)</span>
+<span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104CloseUnit</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_short</span><span class="p">]</span>
+<span class="c1"># This function returns a list of all the attached PT-104 devices of the</span>
+<span class="c1"># specified port type</span>
+<span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104Enumerate</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_char</span><span class="p">),</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_ulong</span><span class="p">),</span>
+                                          <span class="n">CommunicationType</span><span class="p">]</span>
+
+<span class="c1"># This function obtains information on a specified device.</span>
+<span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104GetUnitInfo</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_short</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_char</span><span class="p">),</span>
+                                            <span class="n">c_short</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_short</span><span class="p">),</span>
+                                            <span class="n">PicoInfo</span><span class="p">]</span>
+
+<span class="c1"># Get the most recent data reading from a channel.</span>
+<span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104GetValue</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_short</span><span class="p">,</span> <span class="n">Channels</span><span class="p">,</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_long</span><span class="p">),</span>
+                                         <span class="n">c_short</span><span class="p">]</span>
+
+<span class="c1"># Open the device through its USB interface.</span>
+<span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104OpenUnit</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">POINTER</span><span class="p">(</span><span class="n">c_short</span><span class="p">),</span> <span class="n">POINTER</span><span class="p">(</span><span class="n">c_char</span><span class="p">)]</span>
+
+<span class="c1"># Specify the sensor type and filtering for a channel.</span>
+<span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104SetChannel</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_short</span><span class="p">,</span> <span class="n">Channels</span><span class="p">,</span> <span class="n">DataTypes</span><span class="p">,</span>
+                                           <span class="n">c_short</span><span class="p">]</span>
+
+<span class="c1"># This function is used to inform the driver of the local mains (line)</span>
+<span class="c1"># frequency. This helps the driver to filter out electrical noise.</span>
+<span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104SetMains</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">c_short</span><span class="p">,</span> <span class="n">c_ushort</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="PT104"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.PT104">[docs]</a><span class="k">class</span> <span class="nc">PT104</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span> <span class="o">=</span> <span class="p">{</span><span class="n">Channels</span><span class="o">.</span><span class="n">CHANNEL_1</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;data_type&#39;</span><span class="p">:</span> <span class="n">DataTypes</span><span class="o">.</span><span class="n">OFF</span><span class="p">,</span>
+                                              <span class="s1">&#39;nb_wires&#39;</span><span class="p">:</span> <span class="n">Wires</span><span class="o">.</span><span class="n">WIRES_4</span><span class="p">,</span>
+                                              <span class="s1">&#39;low_pass_filter&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                                              <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                                              <span class="s1">&#39;last_query&#39;</span><span class="p">:</span> <span class="n">time</span><span class="p">()},</span>
+                         <span class="n">Channels</span><span class="o">.</span><span class="n">CHANNEL_2</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;data_type&#39;</span><span class="p">:</span> <span class="n">DataTypes</span><span class="o">.</span><span class="n">OFF</span><span class="p">,</span>
+                                              <span class="s1">&#39;nb_wires&#39;</span><span class="p">:</span> <span class="n">Wires</span><span class="o">.</span><span class="n">WIRES_4</span><span class="p">,</span>
+                                              <span class="s1">&#39;low_pass_filter&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                                              <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                                              <span class="s1">&#39;last_query&#39;</span><span class="p">:</span> <span class="n">time</span><span class="p">()},</span>
+                         <span class="n">Channels</span><span class="o">.</span><span class="n">CHANNEL_3</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;data_type&#39;</span><span class="p">:</span> <span class="n">DataTypes</span><span class="o">.</span><span class="n">OFF</span><span class="p">,</span>
+                                              <span class="s1">&#39;nb_wires&#39;</span><span class="p">:</span> <span class="n">Wires</span><span class="o">.</span><span class="n">WIRES_4</span><span class="p">,</span>
+                                              <span class="s1">&#39;low_pass_filter&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                                              <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                                              <span class="s1">&#39;last_query&#39;</span><span class="p">:</span> <span class="n">time</span><span class="p">()},</span>
+                         <span class="n">Channels</span><span class="o">.</span><span class="n">CHANNEL_4</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;data_type&#39;</span><span class="p">:</span> <span class="n">DataTypes</span><span class="o">.</span><span class="n">OFF</span><span class="p">,</span>
+                                              <span class="s1">&#39;nb_wires&#39;</span><span class="p">:</span> <span class="n">Wires</span><span class="o">.</span><span class="n">WIRES_4</span><span class="p">,</span>
+                                              <span class="s1">&#39;low_pass_filter&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                                              <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                                              <span class="s1">&#39;last_query&#39;</span><span class="p">:</span> <span class="n">time</span><span class="p">()}}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="PT104.discover_devices"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.PT104.discover_devices">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">discover_devices</span><span class="p">(</span><span class="n">communication_type</span><span class="o">=</span><span class="n">CommunicationType</span><span class="o">.</span><span class="n">CT_USB</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function returns a list of all the attached PT-104 devices</span>
+<span class="sd">        of the specified port type</span>
+
+<span class="sd">        :param communication_type:  type of the devices to discover</span>
+<span class="sd">                                    (COMMUNICATION_TYPE)</span>
+<span class="sd">        :return: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">enum_len</span> <span class="o">=</span> <span class="n">c_ulong</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+        <span class="n">enum_string</span> <span class="o">=</span> <span class="n">create_string_buffer</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+
+        <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104Enumerate</span><span class="p">(</span><span class="n">enum_string</span><span class="p">,</span> <span class="n">enum_len</span><span class="p">,</span>
+                                      <span class="n">communication_type</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">enum_string</span><span class="o">.</span><span class="n">value</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">get_unit_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">print_result</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function obtains information on a specified device.</span>
+
+<span class="sd">        :param print_result: also print the unit info to the console</span>
+<span class="sd">        :return: the unit info as dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">info_len</span> <span class="o">=</span> <span class="n">c_short</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+        <span class="n">info_string</span> <span class="o">=</span> <span class="n">create_string_buffer</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+        <span class="n">req_len</span> <span class="o">=</span> <span class="n">c_short</span><span class="p">()</span>
+        <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104GetUnitInfo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">info_string</span><span class="p">,</span> <span class="n">info_len</span><span class="p">,</span>
+                                        <span class="n">byref</span><span class="p">(</span><span class="n">req_len</span><span class="p">),</span>
+                                        <span class="n">PicoInfo</span><span class="o">.</span><span class="n">PICO_DRIVER_VERSION</span><span class="p">)</span>
+        <span class="n">driver_version</span> <span class="o">=</span> <span class="n">info_string</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104GetUnitInfo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">info_string</span><span class="p">,</span> <span class="n">info_len</span><span class="p">,</span>
+                                        <span class="n">byref</span><span class="p">(</span><span class="n">req_len</span><span class="p">),</span>
+                                        <span class="n">PicoInfo</span><span class="o">.</span><span class="n">PICO_USB_VERSION</span><span class="p">)</span>
+        <span class="n">usb_version</span> <span class="o">=</span> <span class="n">info_string</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104GetUnitInfo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">info_string</span><span class="p">,</span> <span class="n">info_len</span><span class="p">,</span>
+                                        <span class="n">byref</span><span class="p">(</span><span class="n">req_len</span><span class="p">),</span>
+                                        <span class="n">PicoInfo</span><span class="o">.</span><span class="n">PICO_HARDWARE_VERSION</span><span class="p">)</span>
+        <span class="n">hardware_version</span> <span class="o">=</span> <span class="n">info_string</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104GetUnitInfo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">info_string</span><span class="p">,</span> <span class="n">info_len</span><span class="p">,</span>
+                                        <span class="n">byref</span><span class="p">(</span><span class="n">req_len</span><span class="p">),</span>
+                                        <span class="n">PicoInfo</span><span class="o">.</span><span class="n">PICO_VARIANT_INFO</span><span class="p">)</span>
+        <span class="n">variant_info</span> <span class="o">=</span> <span class="n">info_string</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104GetUnitInfo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">info_string</span><span class="p">,</span> <span class="n">info_len</span><span class="p">,</span>
+                                        <span class="n">byref</span><span class="p">(</span><span class="n">req_len</span><span class="p">),</span>
+                                        <span class="n">PicoInfo</span><span class="o">.</span><span class="n">PICO_BATCH_AND_SERIAL</span><span class="p">)</span>
+        <span class="n">batch_and_serial</span> <span class="o">=</span> <span class="n">info_string</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104GetUnitInfo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">info_string</span><span class="p">,</span> <span class="n">info_len</span><span class="p">,</span>
+                                        <span class="n">byref</span><span class="p">(</span><span class="n">req_len</span><span class="p">),</span> <span class="n">PicoInfo</span><span class="o">.</span><span class="n">PICO_CAL_DATE</span><span class="p">)</span>
+        <span class="n">cal_date</span> <span class="o">=</span> <span class="n">info_string</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104GetUnitInfo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">info_string</span><span class="p">,</span> <span class="n">info_len</span><span class="p">,</span>
+                                        <span class="n">byref</span><span class="p">(</span><span class="n">req_len</span><span class="p">),</span>
+                                        <span class="n">PicoInfo</span><span class="o">.</span><span class="n">PICO_KERNEL_DRIVER_VERSION</span><span class="p">)</span>
+        <span class="n">kernel_driver_version</span> <span class="o">=</span> <span class="n">info_string</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">print_result</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;driver_version: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">driver_version</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;usb_version: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">usb_version</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hardware_version:  </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">hardware_version</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;variant_info: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">variant_info</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;batch_and_serial: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">batch_and_serial</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cal_date: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">cal_date</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;kernel_driver_version: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">kernel_driver_version</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">driver_version</span><span class="o">=</span><span class="n">driver_version</span><span class="p">,</span>
+                    <span class="n">usb_version</span><span class="o">=</span><span class="n">usb_version</span><span class="p">,</span>
+                    <span class="n">hardware_version</span><span class="o">=</span><span class="n">hardware_version</span><span class="p">,</span>
+                    <span class="n">variant_info</span><span class="o">=</span><span class="n">variant_info</span><span class="p">,</span>
+                    <span class="n">batch_and_serial</span><span class="o">=</span><span class="n">batch_and_serial</span><span class="p">,</span>
+                    <span class="n">cal_date</span><span class="o">=</span><span class="n">cal_date</span><span class="p">,</span>
+                    <span class="n">kernel_driver_version</span><span class="o">=</span><span class="n">kernel_driver_version</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_connected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;returns the connection status</span>
+
+<span class="sd">        :return: connection status</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="PT104.connect"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.PT104.connect">[docs]</a>    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serial</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">interface</span><span class="o">=</span><span class="n">CommunicationType</span><span class="o">.</span><span class="n">CT_USB</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Connect to a PT-104A data acquisition module via USB or Ethernet</span>
+
+<span class="sd">        .. note:: Ethernet connection is not implemented</span>
+
+<span class="sd">        :param serial: serial number of the device</span>
+<span class="sd">        :return: connection status</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">interface</span> <span class="o">==</span> <span class="n">CommunicationType</span><span class="o">.</span><span class="n">CT_ALL</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;interface must be either &#39;</span>
+                             <span class="s1">&#39;CommunicationType.CT_USB or&#39;</span>
+                             <span class="s1">&#39;CommunicationType.CT_ETHERNET&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">interface</span> <span class="o">==</span> <span class="n">CommunicationType</span><span class="o">.</span><span class="n">CT_ETHERNET</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;interface CommunicationType.CT_ETHERNET&#39;</span>
+                                      <span class="s1">&#39;is not implemented jet&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">c_short</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">serial</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="n">serial</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="n">status_unit</span> <span class="o">=</span> <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104OpenUnit</span><span class="p">(</span><span class="n">byref</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">),</span> <span class="n">serial</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status_unit</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Picolog PT104 opened successfully&#39;</span><span class="p">)</span>
+            <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_unit_info</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_channels</span><span class="p">()</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt;&gt; Picolog ERROR opening device &lt;&lt;&lt;&lt;&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">status_unit</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">active_channel_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;return the number of active channels</span>
+
+<span class="sd">        :return: number of active channels</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">channel</span><span class="p">,</span> <span class="n">conf</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">conf</span><span class="p">[</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">DataTypes</span><span class="o">.</span><span class="n">OFF</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">n</span>
+
+<div class="viewcode-block" id="PT104.disconnect"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.PT104.disconnect">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;disconnect from the unit</span>
+
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104CloseUnit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="PT104.set_channel"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.PT104.set_channel">[docs]</a>    <span class="k">def</span> <span class="nf">set_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">data_type</span><span class="p">,</span> <span class="n">nb_wires</span><span class="p">,</span> <span class="n">low_pass_filter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;writes the channel configuration to self.channels and the device.</span>
+
+<span class="sd">        :param channel: channel number (Channels)</span>
+<span class="sd">        :param data_type: data type of the connected probe (DataType)</span>
+<span class="sd">        :param nb_wires: number of wires (Wires)</span>
+<span class="sd">        :param low_pass_filter: use the low pass filter [True, False]</span>
+<span class="sd">        :return: status</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;nb_wires&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nb_wires</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;low_pass_filter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">low_pass_filter</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">:</span>
+            <span class="c1"># change config only</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">cs</span> <span class="o">=</span> <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104SetChannel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span>
+                                            <span class="n">channel</span><span class="p">,</span>
+                                            <span class="n">data_type</span><span class="p">,</span>
+                                            <span class="n">nb_wires</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cs</span></div>
+
+<div class="viewcode-block" id="PT104.set_channels"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.PT104.set_channels">[docs]</a>    <span class="k">def</span> <span class="nf">set_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;sets the channel configuration from self.channels</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">channel</span><span class="p">,</span> <span class="n">conf</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_channel</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">conf</span><span class="p">[</span><span class="s1">&#39;data_type&#39;</span><span class="p">],</span> <span class="n">conf</span><span class="p">[</span><span class="s1">&#39;nb_wires&#39;</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="PT104.get_value"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.PT104.get_value">[docs]</a>    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">raw_value</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;queries the measurement value from the unit</span>
+
+<span class="sd">        :param channel: channel number (Channels)</span>
+<span class="sd">        :param raw_value: skip conversion</span>
+<span class="sd">        :return: measured value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wait_for_conversion</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+        <span class="n">status_channel</span> <span class="o">=</span> <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104GetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span>
+                                                      <span class="n">channel</span><span class="p">,</span>
+                                                      <span class="n">byref</span><span class="p">(</span>
+                                                          <span class="bp">self</span><span class="o">.</span><span class="n">channels</span>
+                                                          <span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]),</span>
+                                                      <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span>
+                                                      <span class="p">[</span><span class="s1">&#39;low_pass_filter&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;last_query&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">status_channel</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">raw_value</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_value</span><span class="p">(</span>
+                <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="n">channel</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">get_value_channel_1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;queries the measurement value from channel 1</span>
+<span class="sd">        :return: scaled measured value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">Channels</span><span class="o">.</span><span class="n">CHANNEL_1</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">get_value_channel_2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;queries the measurement value from channel 2</span>
+<span class="sd">        :return: scaled measured value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">Channels</span><span class="o">.</span><span class="n">CHANNEL_2</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">get_value_channel_3</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;queries the measurement value from channel 3</span>
+<span class="sd">        :return: scaled measured value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">Channels</span><span class="o">.</span><span class="n">CHANNEL_3</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">get_value_channel_4</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;queries the measurement value from channel 4</span>
+<span class="sd">        :return: scaled measured value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">Channels</span><span class="o">.</span><span class="n">CHANNEL_4</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PT104.set_mains"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.PT104.set_mains">[docs]</a>    <span class="k">def</span> <span class="nf">set_mains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sixty_hertz</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function is used to inform the driver of the local mains (line)</span>
+<span class="sd">        frequency.</span>
+
+<span class="sd">        This helps the driver to filter out electrical noise.</span>
+
+<span class="sd">        :param sixty_hertz: mains frequency is sixty</span>
+<span class="sd">        :return: success</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">sixty_hertz</span><span class="p">:</span>
+            <span class="n">sixty_hertz</span> <span class="o">=</span> <span class="n">c_ushort</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sixty_hertz</span> <span class="o">=</span> <span class="n">c_ushort</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104SetMains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">sixty_hertz</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+    <span class="k">def</span> <span class="nf">_wait_for_conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;wait until the adc cionversion is finished</span>
+
+<span class="sd">        :param channel: channel number (Channels)</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">conversion_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">active_channel_count</span> <span class="o">*</span> <span class="mf">0.75</span>
+        <span class="n">last_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;last_query&#39;</span><span class="p">]</span>
+        <span class="k">while</span> <span class="n">last_query</span> <span class="o">+</span> <span class="n">conversion_time</span> <span class="o">&gt;</span> <span class="n">time</span><span class="p">():</span>
+            <span class="k">pass</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="PT104.scale_value"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.PT104.scale_value">[docs]</a>    <span class="k">def</span> <span class="nf">scale_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;scales the value from the device.</span>
+
+<span class="sd">        :param value: value to convert as float</span>
+<span class="sd">        :param channel: channel number (Channels)</span>
+<span class="sd">        :return: Temperature in °C, Resistance in mOhm, Voltage in mV</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="n">DataTypes</span><span class="o">.</span><span class="n">PT100</span><span class="p">,</span>
+                                                   <span class="n">DataTypes</span><span class="o">.</span><span class="n">PT1000</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="mf">10.0</span> <span class="o">**</span> <span class="mi">3</span>  <span class="c1"># °C</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">DataTypes</span><span class="o">.</span><span class="n">RESISTANCE_TO_375R</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="mf">10.0</span> <span class="o">**</span> <span class="mi">3</span>  <span class="c1"># mOhm</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">DataTypes</span><span class="o">.</span><span class="n">RESISTANCE_TO_10K</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>  <span class="c1"># mOhm</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span>
+                                            <span class="n">DataTypes</span><span class="o">.</span><span class="n">DIFFERENTIAL_TO_115MV</span><span class="p">,</span>
+                                            <span class="n">DataTypes</span><span class="o">.</span><span class="n">SINGLE_ENDED_TO_115MV</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="mf">10.0</span> <span class="o">**</span> <span class="mi">9</span>  <span class="c1"># mV</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span>
+                                            <span class="n">DataTypes</span><span class="o">.</span><span class="n">DIFFERENTIAL_TO_2500MV</span><span class="p">,</span>
+                                            <span class="n">DataTypes</span><span class="o">.</span><span class="n">SINGLE_ENDED_TO_2500MV</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="mf">10.0</span> <span class="o">**</span> <span class="mi">8</span>  <span class="c1"># mV</span></div></div>
+
+
+<div class="viewcode-block" id="channel_x"><a class="viewcode-back" href="../../pycotech.html#pycotech.loggers.channel_x">[docs]</a><span class="k">def</span> <span class="nf">channel_x</span><span class="p">(</span><span class="n">ch_number</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generates the `Channels.CHANNEL_?` attribute of the Channels</span>
+<span class="sd">    class, given a channel number.</span>
+
+<span class="sd">    Useful to send as argument to PT104().set_channel(), or PT104().get_value</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ch_number (int):    channel number, from 1 to 4 in differential mode</span>
+<span class="sd">                            or 1 to 8 in single-ended mode</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        `Channels.CHANNEL_?` attribute of the Channels class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">Channels</span><span class="p">,</span> <span class="s1">&#39;CHANNEL_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ch_number</span><span class="p">))</span></div>
+</pre></div>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alvise Vianello<br/>
+        
+            &copy; Copyright 2020, Alvise Vianello.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

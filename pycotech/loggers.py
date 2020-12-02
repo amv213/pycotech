@@ -43,9 +43,14 @@ __email__ = "m.schroeder@tu-berlin.de"
 __status__ = "Beta"
 __docformat__ = 'reStructuredText'
 
+import logging
 from ctypes import *
 from enum import IntEnum
 from time import time
+from pathlib import Path
+
+# Spawn module-level logger
+logger = logging.getLogger(__name__)
 
 
 class CtypesEnum(IntEnum):
@@ -103,8 +108,8 @@ class PicoInfo(CtypesEnum):
 
 
 # load the shared library
-print(__file__)
-lib_path = "libs\\usbpt104.dll"
+lib_path = Path(__file__).parent / 'libs' / 'usbpt104.dll'
+lib_path = lib_path.as_posix()
 libusbpt104 = cdll.LoadLibrary(lib_path)
 
 # define function argument types
@@ -434,7 +439,7 @@ class PT104(object):
 
 
 def channel_x(ch_number):
-    """Generates the PT104.Channels.CHANNEL_? attribute of the Channels
+    """Generates the `Channels.CHANNEL_?` attribute of the Channels
     class, given a channel number.
 
     Useful to send as argument to PT104().set_channel(), or PT104().get_value
@@ -444,7 +449,7 @@ def channel_x(ch_number):
                             or 1 to 8 in single-ended mode
 
     Returns:
-        Channels.CHANNEL_? attribute of the Channels class
+        `Channels.CHANNEL_?` attribute of the Channels class
     """
 
     return getattr(Channels, 'CHANNEL_' + str(ch_number))
