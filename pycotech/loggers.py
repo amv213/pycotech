@@ -103,6 +103,7 @@ class PicoInfo(CtypesEnum):
 
 
 # load the shared library
+print(__file__)
 lib_path = "libs\\usbpt104.dll"
 libusbpt104 = cdll.LoadLibrary(lib_path)
 

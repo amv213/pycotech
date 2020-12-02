@@ -1,3 +1,13 @@
+# Pycharm files
 .idea
 __pycache__
+
+# Gitlab `public` folder for deployement of pages
 public
+
+# Compiled python modules.
+*.pyc
+
+# Python egg metadata, regenerated from source files by setuptools.
+/*.egg-info
+/*.egg
