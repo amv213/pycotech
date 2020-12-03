@@ -1,5 +1,6 @@
 import re
 import sys
+import yaml
 import struct
 import logging
 import configparser
@@ -11,7 +12,7 @@ from typing import Union, Dict
 logger = logging.getLogger(__name__)
 
 
-def fetch_metadata(fn: Union[str, Path]) -> str:
+def fetch_metadata(fn: Union[str, Path]) -> Dict[str, Dict[str, str]]:
     """Extracts metadata information from a .PLW file.
 
     Args:
@@ -35,7 +36,18 @@ def fetch_metadata(fn: Union[str, Path]) -> str:
             # Read in binary chunk and decode
             metadata = f.read().decode('cp437')
 
-    except FileNotFoundError as e:
+            # Metadata is structured as a .ini file.
+            # Add temporary section header at the beginning to corrupted
+            # sections
+            config = configparser.ConfigParser(allow_no_value=True,
+                                               strict=False)
+            config.read_string('[temporary_section]\n' + metadata)
+            config.remove_section('temporary_section')
+
+            # Return metadata as dict
+            metadata = config._sections
+
+    except FileNotFoundError:
         logger.exception("Could not find .PLW file")
         sys.exit()
 
@@ -43,8 +55,7 @@ def fetch_metadata(fn: Union[str, Path]) -> str:
 
 
 def save_metadata(fn: Union[str, Path]) -> None:
-    """Extracts metadata information from a .PLW file and saves it in a .ini
-    file.
+    """Extracts metadata information from a .PLW file and saves it as YAML.
 
     Args:
         fn: path to the .PLW file to parse.
@@ -52,16 +63,9 @@ def save_metadata(fn: Union[str, Path]) -> None:
 
     metadata = fetch_metadata(fn=fn)
 
-    # Metadata is structured as a .ini file.
-    # Add temporary section header at the beginning to corrupted sections
-    config = configparser.ConfigParser(allow_no_value=True, strict=False)
-    config.read_string('[temporary_section]\n' + metadata)
-    config.remove_section('temporary_section')
-
-    fn_meta = Path(fn).with_suffix('.ini')
-    with open(fn_meta, 'w', encoding='cp437') as configfile:
-        config.write(configfile)
-        logger.info("Saved .PLW metadata in %s", fn_meta)
+    fn_meta = Path(fn).with_suffix('.yml')
+    with open(fn_meta, 'w', encoding='cp437') as f:
+        yaml.dump(metadata, f)
 
 
 def read_txt(fn: Union[str, Path]) -> pd.DataFrame:
@@ -172,7 +176,7 @@ def read_plw(fn: Union[str, Path]) -> pd.DataFrame:
         df = pd.DataFrame(rows, columns=column_labels)
         df = df.set_index('Time').reset_index(drop=True)
 
-    except FileNotFoundError as e:
+    except FileNotFoundError:
         logger.exception("Could not find .PLW file")
         df = pd.DataFrame()
 

@@ -1,2 +1,4 @@
 pandas~=1.1.4
 setuptools~=49.6.0
+yaml~=0.2.5
+pyyaml~=5.3.1
