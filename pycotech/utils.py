@@ -2,6 +2,7 @@ import re
 import sys
 import struct
 import logging
+import configparser
 import pandas as pd
 from pathlib import Path
 from typing import Union, Dict
@@ -39,6 +40,28 @@ def fetch_metadata(fn: Union[str, Path]) -> str:
         sys.exit()
 
     return metadata
+
+
+def save_metadata(fn: Union[str, Path]) -> None:
+    """Extracts metadata information from a .PLW file and saves it in a .ini
+    file.
+
+    Args:
+        fn: path to the .PLW file to parse.
+    """
+
+    metadata = fetch_metadata(fn=fn)
+
+    # Metadata is structured as a .ini file.
+    # Add temporary section header at the beginning to corrupted sections
+    config = configparser.ConfigParser(allow_no_value=True, strict=False)
+    config.read_string('[temporary_section]\n' + metadata)
+    config.remove_section('temporary_section')
+
+    fn_meta = Path(fn).with_suffix('.ini')
+    with open(fn_meta, 'w', encoding='cp437') as configfile:
+        config.write(configfile)
+        logger.info("Saved .PLW metadata in %s", fn_meta)
 
 
 def read_txt(fn: Union[str, Path]) -> pd.DataFrame:
