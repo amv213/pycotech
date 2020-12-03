@@ -6,7 +6,7 @@ import logging
 import configparser
 import pandas as pd
 from pathlib import Path
-from typing import Union, Dict
+from typing import Union, List, Dict
 
 # Spawn module-level logger
 logger = logging.getLogger(__name__)
@@ -68,6 +68,44 @@ def save_metadata(fn: Union[str, Path]) -> None:
         yaml.dump(metadata, f)
 
 
+def map_channels(fn: Union[str, Path]) -> Dict[str, List[str]]:
+    """Parses metadata in the .PLW file to build mapping between acquisition
+    devices and associated channels. Devices and channels are mapped in same
+    order as acquisition.
+
+    Args:
+        fn: path to the .PLW file to parse.
+
+    Returns:
+        dictionary mapping the serial of each acquisition device to the
+        labels of its associated channels.
+    """
+
+    # Extract metadata
+    metadata = fetch_metadata(fn)
+
+    # Number of acquisition channels
+    num_channels = int(metadata['General']['noofparameters'])
+
+    # Number of converters (devices)
+    num_converters = int(metadata['General']['noofconverters'])
+
+    # Usually 4 channels per device
+    channels_per_converter = num_channels // num_converters
+
+    # keys: for each device get its serial id
+    # values: get the name of each channel (parameter) for each parameter
+    # associated with each device (unit)
+    mapping = {metadata[f'Converter {i + 1}']['serial']:
+                   [metadata[f'Parameter {j}']['name'] for j in
+                    [metadata[f'Unit {i + 1} Channel {k + 1}']['paramno'] for k
+                     in range(channels_per_converter)]
+                    ]
+               for i in range(num_converters)}
+
+    return mapping
+
+
 def read_txt(fn: Union[str, Path]) -> pd.DataFrame:
     """Saves contents of a PicoLog PLW Player .TXT file into a properly
     formatted dataframe.
@@ -122,19 +160,12 @@ def read_plw(fn: Union[str, Path]) -> pd.DataFrame:
     # Try opening file
     try:
 
-        # Extract metadata
-        metadata = fetch_metadata(fn)
+        # Ordered mapping between acquisition devices and associated channels
+        devices_dict = map_channels(fn=fn)
 
-        # Now can use regex to extract any wanted metadata:
-
-        # Number of acquisition channels
-        num_channels = re.findall(r'NoOfParameters=([0-9]+)', metadata)
-        num_channels = int(num_channels[0])
-
-        # Name of acquisition channels
-        channels = re.findall(r'Name=(\w+)', metadata)
-        # `Names` are not unique in metadata, so only take from end
-        channels = channels[-num_channels:]
+        # Names of channels
+        channels = [ch for chs in devices_dict.values() for ch in chs]
+        num_channels = len(channels)
 
         column_labels = ['Time'] + channels
 
@@ -214,37 +245,3 @@ def to_pico_stream(df: pd.DataFrame) -> pd.DataFrame:
     df.reset_index(drop=True, inplace=True)
 
     return df
-
-
-def map_channels(fn: Union[str, Path]) -> Dict[str, str]:
-    """Parses metadata in the .PLW file to build mapping between channel
-    labels and name of corresponding acquisition device.
-
-    Args:
-        fn: path to the .PLW file to parse.
-
-    Returns:
-        dictionary mapping acquisition channel label stumps (X*) to the id of
-        the device they are associated to.
-    """
-
-    metadata = fetch_metadata(fn)
-
-    # Now can use regex to extract any wanted metadata:
-
-    # Number of acquisition channels
-    num_channels = re.findall(r'NoOfParameters=([0-9]+)', metadata)
-    num_channels = int(num_channels[0])
-
-    # Name of acquisition channels
-    channels = re.findall(r'Name=(\w+)', metadata)
-    # `Names` are not unique in metadata, so only take from end
-    channels = channels[-num_channels:]
-
-    # Label of acquisition devices
-    devices = re.findall(r'Serial=([\w/]+)', metadata)
-
-    stumps = pd.unique([x[0] + '*' for x in channels])
-    chs_to_serial = {key: value for (key, value) in zip(stumps, devices)}
-
-    return chs_to_serial
