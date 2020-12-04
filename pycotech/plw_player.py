@@ -4,6 +4,7 @@ import argparse
 from . import utils
 from pathlib import Path
 
+
 def main():
 
     # Setup a basic logger
@@ -62,7 +63,3 @@ def main():
 
     logger.info("ALL DONE! \U0001F44D")
 
-
-if __name__ == "__main__":
-
-    main()

@@ -29,7 +29,8 @@ setuptools.setup(
     include_package_data=True,
 
     entry_points={
-        'console_scripts': ['plw-player=pycotech.plw_player:main'],
+        'console_scripts': ['plw-player=pycotech.plw_player:main',
+                            'plw-recorder=pycotech.plw_recorder:main'],
     }
 )
 

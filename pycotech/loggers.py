@@ -403,7 +403,7 @@ class PT104(object):
         return True
 
     def _wait_for_conversion(self, channel):
-        """wait until the adc cionversion is finished
+        """wait until the adc conversion is finished
 
         :param channel: channel number (Channels)
         :return:
