@@ -1,6 +1,7 @@
 import logging
 import pycotech.loggers
 import pycotech.utils
+import pycotech.plw_player
 
 logger = logging.getLogger(__name__)
 logger.setLevel("WARNING")  # (default) best practice

@@ -27,6 +27,10 @@ setuptools.setup(
     install_requires=[
     ],
     include_package_data=True,
+
+    entry_points={
+        'console_scripts': ['plw-player=pycotech.plw_player:main'],
+    }
 )
 
 # to build the package run the following:

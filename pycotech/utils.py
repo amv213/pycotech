@@ -121,8 +121,6 @@ def read_txt(fn: Union[str, Path]) -> pd.DataFrame:
         columns:    `<channel_name>`, ... x num_channels
     """
 
-    # TODO: check input file is text
-
     # use cp437 decoding or similar to make it work nicely
     df = pd.read_csv(fn, delimiter='\t', encoding='cp437', dtype='unicode',
                      header=0)
@@ -154,8 +152,6 @@ def read_plw(fn: Union[str, Path]) -> pd.DataFrame:
         index:      None (enumeration of entries)
         columns:    `<channel_name>`, ... x num_channels
     """
-
-    # TODO: check file is .PLW
 
     # Try opening file
     try:
