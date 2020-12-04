@@ -248,3 +248,33 @@ def to_pico_stream(df: pd.DataFrame) -> pd.DataFrame:
     df.reset_index(drop=True, inplace=True)
 
     return df
+
+
+def from_pico_stream(df: pd.DataFrame) -> pd.DataFrame:
+    """Packs a channel-by-channel data-stream into a PicoLog PLW Player data
+    dataframe, where each row has temperature measurements across
+    all PicoLogger acquisition channels.
+
+    For an input data-stream of length num_samples x num_channels, the output
+    dataframe will have shape (num_samples, num_channels).
+
+    Args:
+        df: PicoLog PLW Player data-stream, where each row has a
+        temperature measurement from a single PicoLogger acquisition channel.
+
+    Returns:
+        Equivalent packed-dataframe, where each row has temperature
+        measurements across all PicoLogger acquisition channels.
+
+        index:      None (enumeration of entries)
+        columns:    `<channel_name>`, ... x num_channels
+    """
+
+    # Reindex timestamps with one timestamp per block of channels
+    channels = df['channel'].unique().astype(str)
+    df.index = df.index // len(channels)
+
+    # Pivot table
+    df = df.pivot(columns='channel', values='temp')
+
+    return df
