@@ -25,9 +25,11 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     python_requires='>=3.8',
     install_requires=[
+        'pandas',
+        'pyyaml',
+        'setuptools',
     ],
     include_package_data=True,
-
     entry_points={
         'console_scripts': ['plw-player=pycotech.plw_player:main',
                             'plw-recorder=pycotech.plw_recorder:main'],
