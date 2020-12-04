@@ -229,11 +229,18 @@ def to_pico_stream(df: pd.DataFrame) -> pd.DataFrame:
         columns:    `channel`, `temp`
     """
 
-    # Melt the dataframe
-    df = df.unstack().reset_index()
+    channels_order = df.columns.values
 
-    # Rename columns and sort them chronologically by original time id
+    # Melt the dataframe and rename columns
+    df = df.unstack().reset_index()
     df.columns = ['channel', 'Time', 'temp']
+
+    # attach a categorical ordered data type to channel values so that they
+    # maintain the acquisition order when sorting
+    t = pd.CategoricalDtype(categories=channels_order, ordered=True)
+    df['channel'] = pd.Series(df['channel'], dtype=t)
+
+    # Sort values by time and channel order
     df.sort_values(['Time', 'channel'], inplace=True)
 
     # Reset `Time` index to give each entry virtual time id
