@@ -67,9 +67,14 @@ def main():
     serials = loggers.PT104().discover_devices()
     # Extract device serial numbers
     serials = serials.decode().split(',')
-    serials = [serial.split(':')[1] for serial in serials]
 
-    logger.info("Found the following devices: %s", serials)
+    if len(serials) > 0:
+        serials = [serial.split(':')[1] for serial in serials]
+        logger.info("Found the following devices: %s", serials)
+    else:
+        logger.info("Could not find any connected devices...")
+        logger.info("END \U0001F440")
+        sys.exit()
 
     # Ask user if ok with detected devices
     choice = input("Continue? [Y/n]")
@@ -98,7 +103,6 @@ def main():
     try:
 
         # Connect to all devices
-
         for name, device in devices.items():
 
             device.connect(name)
@@ -130,7 +134,7 @@ def main():
 
                 for ch_number in range(1, 5):
                     value = device.get_value(loggers.channel_x(ch_number))
-                    channel = labels.get(name) + ch_number
+                    channel = labels.get(name) + str(ch_number)
 
                     rows.append([channel, value])
 
