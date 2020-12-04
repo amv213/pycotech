@@ -1,1 +1,1 @@
-include pycotech/libs
+recursive-include pycotech/libs
