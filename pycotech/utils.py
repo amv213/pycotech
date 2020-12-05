@@ -269,6 +269,10 @@ def from_pico_stream(df: pd.DataFrame) -> pd.DataFrame:
         columns:    `<channel_name>`, ... x num_channels
     """
 
+    # Fill possible missing values in stream. Fill with same token as
+    # PicoLog Recorder
+    df.fillna(value='******', inplace=True)
+
     # Reindex timestamps with one timestamp per block of channels
     channels = df['channel'].unique().astype(str)
     df.index = df.index // len(channels)

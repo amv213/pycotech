@@ -58,7 +58,7 @@ def main():
 
     # Save dataframe as .TXT
     logger.info("\tgenerating .TXT file...")
-    df.to_csv(txt_file, sep='\t', index=False, encoding='cp437')
+    df.to_csv(txt_file, sep='\t', encoding='cp437')
     logger.info("\tDONE\n")
 
     logger.info("ALL DONE! \U0001F44D")

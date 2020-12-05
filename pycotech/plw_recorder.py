@@ -4,8 +4,8 @@ import string
 import logging
 import argparse
 import pandas as pd
-from . import utils
-from . import loggers
+import utils
+import loggers
 from typing import List, Union
 from pathlib import Path
 
@@ -32,7 +32,7 @@ def gen_txt(rows: List[List[Union[str, float]]], outdir: Path) -> str:
 
     # Save to .txt with timestamp of creation
     file_name = outdir / f'PycoLog {int(time.time())}.txt'
-    df.to_csv(file_name, sep='\t', index=False, encoding='cp437')
+    df.to_csv(file_name, sep='\t', encoding='cp437')
 
     return str(file_name)
 
@@ -81,6 +81,7 @@ def main():
     choice = input("Continue? [Y/n]")
     if choice not in ['', 'Y', 'y']:
         logger.info("Script has been terminated.")
+        logger.info("END \U0001F6A7")
         sys.exit()
 
     # Ask user channel mappings
@@ -100,26 +101,29 @@ def main():
     devices = {name: loggers.PT104() for name in serials}
 
     rows = []
-    batch_size = 99999
+    batch_size = 28800  # entries per file, = 1 log a day (assuming 3s sampling period)
     try:
 
         # Connect to all devices
+        logger.info("Connecting devices...")
         for name, device in devices.items():
 
             device.connect(name)
+            logger.info("\t%s connected", name)
 
             # Set all channels to correct settings
             for ch_number in range(1, 5):
                 device.set_channel(loggers.channel_x(ch_number),
                                    loggers.DataTypes.PT100,
                                    loggers.Wires.WIRES_4)
+        logger.info("\tDONE\n")
 
         # Actual PT-104 Main Loop
         logger.info("Collecting data...")
         idx = 0
         while True:
 
-            if idx > batch_size:
+            if idx >= batch_size:
 
                 # Save dataframe as .TXT
                 logger.info("\tgenerating .TXT file...")
@@ -150,16 +154,20 @@ def main():
 
         logger.info("Terminating program...")
 
-        # Make sure to save latest results
-        logger.info("\tgenerating .TXT file...")
-        log_name = gen_txt(rows, outdir=save_dir)
-        logger.info("\t\tDONE [%s]", log_name)
-
-        # Disconnect devices
+        # Disconnect devices first
         logger.info("\tdisconnecting devices...")
         for name, device in devices.items():
             device.disconnect()
             logger.info("\t\t%s disconnected", name)
         logger.info("\tDONE\n")
 
+        # Make sure to save latest results
+        logger.info("\tgenerating .TXT file...")
+        log_name = gen_txt(rows, outdir=save_dir)
+        logger.info("\t\tDONE [%s]", log_name)
+
         logger.info("ALL DONE! \U0001F44D")
+
+
+if __name__ == "__main__":
+    main()
