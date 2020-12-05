@@ -323,7 +323,7 @@ def to_pico_txt(df: pd.DataFrame, fn: Union[str, Path]) -> None:
 
     # Add a subheader with units
     df_header = pd.DataFrame(data=[['( \u00B0C )' for i in df.columns]],
-                             index=['Seconds'],
+                             index=['Sample'],
                              columns=df.columns)  # empty row
     df = pd.concat([df_header, df])
 
@@ -334,7 +334,23 @@ def to_pico_txt(df: pd.DataFrame, fn: Union[str, Path]) -> None:
     df.to_csv(fn, sep='\t')
 
 
-def render_df(df: pd.DataFrame, ax: plt.Axes = None) -> plt.Axes:
+def show_plot(df: pd.DataFrame, ax: plt.Axes = None) -> plt.Axes:
+    """Plots values sampled from the acquisition devices over time.
+
+    Args:
+        df: can either be a dataframe (where each column contains values
+            from a single channel) or a pico-stream (where the first column
+            has channel labels, and the second column has associated
+            measurement values).
+        ax: axes onto which to render plots
+
+    Returns:
+        updated plot axes.
+    """
+
+    # If input data is a pico-stream, pack to dataframe format
+    if len(df.columns.values) == 2:
+        df = from_pico_stream(df)
 
     if ax is None:
         fig = plt.figure()
@@ -342,6 +358,12 @@ def render_df(df: pd.DataFrame, ax: plt.Axes = None) -> plt.Axes:
 
     x = df.index
 
-    ax.plot(x, df['C1'].values)
+    for channel in df.columns:
+        ax.plot(x, df[channel].values, alpha=0.7, label=f'{channel}')
+
+    ax.legend()
+
+    ax.set_xlabel('Sample #')
+    ax.set_ylabel('Measurement Value')
 
     return ax
