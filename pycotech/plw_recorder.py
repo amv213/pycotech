@@ -1,9 +1,32 @@
+"""Script continuously logging PT104 PicoLog data from connected devices.
+Data is saved as timestamped .TXT files in the provided output directory.
+
+Usage:
+    $ plw-recorder [-dir <path_to_logging_dir>]
+
+User input:
+
+    Continue? [Y/n]
+        whether you want to start acquiring data on the PT104 devices
+        identified
+
+    Assign custom labels? [Y/n]
+        whether to assign custom labels for the acquisition channels
+        associated with each PT104 device.
+
+        If `Y`, provide when prompted a single letter which will be used to
+        identify the channels associated with a given acquisition device.
+        Otherwise, channels will be attributed labels in alphabetical order.
+
+Data is sampled at num_active_channels * 0.75s. That is, for a typical
+device with 4 active channels, log entries will have a 3s period.
+"""
+
 import sys
 import time
 import string
 import logging
 import argparse
-import pandas as pd
 from . import utils
 from . import loggers
 from typing import List, Union
