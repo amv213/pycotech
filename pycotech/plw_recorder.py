@@ -4,35 +4,35 @@ import string
 import logging
 import argparse
 import pandas as pd
-import utils
-import loggers
+from . import utils
+from . import loggers
 from typing import List, Union
 from pathlib import Path
 
 
-def gen_txt(rows: List[List[Union[str, float]]], outdir: Path) -> str:
+def gen_txt(rows: List[List[Union[str, float]]], out_dir: Path) -> str:
     """Packs a list of channel-by-channel data-samples into a standard PicoLog
     PLW Player data dataframe format, where each row has temperature
     measurements across all PicoLogger acquisition channels. Results are
     saved in a .txt file.
 
     Args:
-        rows:   list of records. Each record should be a list with the
-                acquisition channel name and associated measurement value.
-        outdir: output directory where to save results
+        rows:       list of records. Each record should be a list with the
+                    acquisition channel name and associated measurement value.
+        out_dir:    output directory where to save results
 
     Returns:
         name of the output file
     """
 
-    # Pack all samples into dataframe
-    df = pd.DataFrame(rows, columns=['channel', 'temp'])
-    df.reset_index(drop=True, inplace=True)
-    df = utils.from_pico_stream(df)  # pack
+    # Pack all samples into data-stream
+    df = utils.build_pico_stream(rows=rows)
+    # Pack data-stream into dataframe
+    df = utils.from_pico_stream(df=df)
 
     # Save to .txt with timestamp of creation
-    file_name = outdir / f'PycoLog {int(time.time())}.txt'
-    df.to_csv(file_name, sep='\t', encoding='cp437')
+    file_name = out_dir / f'PycoLog {int(time.time())}.txt'
+    utils.to_pico_txt(df, fn=file_name)
 
     return str(file_name)
 
@@ -127,7 +127,7 @@ def main():
 
                 # Save dataframe as .TXT
                 logger.info("\tgenerating .TXT file...")
-                log_name = gen_txt(rows, outdir=save_dir)
+                log_name = gen_txt(rows, out_dir=save_dir)
                 logger.info("\t\tDONE [%s]", log_name)
 
                 # Reset counters
@@ -163,11 +163,12 @@ def main():
 
         # Make sure to save latest results
         logger.info("\tgenerating .TXT file...")
-        log_name = gen_txt(rows, outdir=save_dir)
+        log_name = gen_txt(rows, out_dir=save_dir)
         logger.info("\t\tDONE [%s]", log_name)
 
         logger.info("ALL DONE! \U0001F44D")
 
 
 if __name__ == "__main__":
+
     main()

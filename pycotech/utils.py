@@ -1,4 +1,5 @@
 import sys
+import time
 import yaml
 import struct
 import logging
@@ -269,10 +270,6 @@ def from_pico_stream(df: pd.DataFrame) -> pd.DataFrame:
         columns:    `<channel_name>`, ... x num_channels
     """
 
-    # Fill possible missing values in stream. Fill with same token as
-    # PicoLog Recorder
-    df.fillna(value='******', inplace=True)
-
     # Reindex timestamps with one timestamp per block of channels
     channels = df['channel'].unique().astype(str)
     df.index = df.index // len(channels)
@@ -281,3 +278,44 @@ def from_pico_stream(df: pd.DataFrame) -> pd.DataFrame:
     df = df.pivot(columns='channel', values='temp')
 
     return df
+
+
+def build_pico_stream(rows: List[List[Union[str, float]]]) -> pd.DataFrame:
+    """Packs a list of channel-by-channel data-samples into a pico-stream
+    dataframe format, where each row is a temperature measurement from a
+    single PicoLogger acquisition channel.
+
+    Args:
+        rows:   list of records. Each record should be a list with the
+                acquisition channel name and associated measurement value.
+
+    Returns:
+        input data packed into a pico-stream dataframe.
+
+        index:      None (enumeration of entries)
+        columns:    `channel`, `temp`
+    """
+
+    # Pack all samples into dataframe
+    df = pd.DataFrame(rows, columns=['channel', 'temp'])
+    df.reset_index(drop=True, inplace=True)
+
+    return df
+
+
+def to_pico_txt(df: pd.DataFrame, fn: Union[str, Path]) -> None:
+    """Saves the input dataframe to .TXT - mimicking the data format used by
+    PicoLog PLW Player.
+
+    Args:
+        df: dataframe to save.
+        fn: path to output .TXT file.
+    """
+
+    # Fill possible missing values in stream. Fill with same token as
+    # PicoLog Recorder
+    df.fillna(value='******', inplace=True)
+
+    # Save to .txt with timestamp of creation
+    df.to_csv(fn, sep='\t', encoding='cp437')
+

@@ -1,3 +1,11 @@
+"""Script converting an input .PLW file to .TXT.
+
+Usage:
+    $ plw-player -plw <path_to_plw> [-txt <path_to_output_txt>]
+
+The output .TXT file follows the same
+"""
+
 import sys
 import logging
 import argparse
@@ -58,8 +66,13 @@ def main():
 
     # Save dataframe as .TXT
     logger.info("\tgenerating .TXT file...")
-    df.to_csv(txt_file, sep='\t', encoding='cp437')
+    utils.to_pico_txt(df, txt_file)
     logger.info("\tDONE\n")
 
     logger.info("ALL DONE! \U0001F44D")
+
+
+if __name__ == "__main__":
+
+    main()
 
