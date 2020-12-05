@@ -3,7 +3,7 @@
 Usage:
     $ plw-player -plw <path_to_plw> [-txt <path_to_output_txt>]
 
-The output .TXT file follows the same
+The output .TXT file follows the same format used by PicoTech's PLW Player.
 """
 
 import sys
