@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """ A Wrapper around the usbpt104 library from Pico for the Pico PT-104A RTD
 DATA Acquisition Module
 
@@ -13,7 +12,7 @@ https://www.picotech.com/downloads > PicoLog DataLoggers > PT-104 > Software
 > PicoSDK 10.6.13 (64-bit)
 they should get installed in (Windows 10)
 C:\\Program Files\\Pico Technology\\SDK\\lib then copy usbpt104.dll to
-current  working directory
+pycotech/libs
 
 The API documentation:
 https://www.picotech.com/download/manuals/usb-pt104-rtd-data-logger-programmers-guide.pdf
@@ -41,7 +40,6 @@ __version__ = "1.0.0"
 __maintainer__ = "Martin Schröder"
 __email__ = "m.schroeder@tu-berlin.de"
 __status__ = "Beta"
-__docformat__ = 'reStructuredText'
 
 import logging
 from ctypes import *
@@ -221,13 +219,13 @@ class PT104(object):
                                         PicoInfo.PICO_KERNEL_DRIVER_VERSION)
         kernel_driver_version = info_string.value.decode()
         if print_result:
-            print('driver_version: %s' % driver_version)
-            print('usb_version: %s' % usb_version)
-            print('hardware_version:  %s' % hardware_version)
-            print('variant_info: %s' % variant_info)
-            print('batch_and_serial: %s' % batch_and_serial)
-            print('cal_date: %s' % cal_date)
-            print('kernel_driver_version: %s' % kernel_driver_version)
+            logger.info('driver_version: %s', driver_version)
+            logger.info('usb_version: %s', usb_version)
+            logger.info('hardware_version:  %s', hardware_version)
+            logger.info('variant_info: %s', variant_info)
+            logger.info('batch_and_serial: %s', batch_and_serial)
+            logger.info('cal_date: %s', cal_date)
+            logger.info('kernel_driver_version: %s', kernel_driver_version)
 
         return dict(driver_version=driver_version,
                     usb_version=usb_version,
@@ -271,12 +269,12 @@ class PT104(object):
             serial = serial.encode()
         status_unit = libusbpt104.UsbPt104OpenUnit(byref(self._handle), serial)
         if status_unit == 0:
-            print('Picolog PT104 opened successfully')
+            logger.info('Picolog PT104 opened successfully')
             _ = self.get_unit_info
             self.set_channels()
             return True
         else:
-            print('>>>> Picolog ERROR opening device <<<<')
+            logger.error('>>>> Picolog ERROR opening device <<<<')
             self._handle = None
             return status_unit
 

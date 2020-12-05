@@ -91,7 +91,7 @@ def main():
             label = input(f"{serial}: ")
             labels[i] = label.upper()
 
-    # Create mapping between devices and labels
+    # build the mapping between devices and labels
     labels = dict(zip(serials, labels))
 
     # Assign an individual PT104 instance to each identifier.
@@ -141,8 +141,10 @@ def main():
 
             idx += 1
 
-    except KeyboardInterrupt as e:
+    except KeyboardInterrupt:
         logger.warning("Received Keyboard Interrupt!")
+    except Exception:
+        logger.exception("Exception raised!")
 
     finally:
 
