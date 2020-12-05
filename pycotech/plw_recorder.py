@@ -68,7 +68,8 @@ def main():
     # Extract device serial numbers
     serials = serials.decode().split(',')
 
-    if len(serials) > 0:
+    # if found any device...
+    if serials != ['']:
         serials = [serial.split(':')[1] for serial in serials]
         logger.info("Found the following devices: %s", serials)
     else:
