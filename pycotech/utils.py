@@ -177,7 +177,7 @@ def read_plw(fn: Union[str, Path]) -> pd.DataFrame:
             rows = []
             idx = 0
             # read in byte arrays for each row and convert entries
-            while idx <= 99999:
+            while idx <= 99999:  # usual max number of samples in a .PLW
                 byte_array = f.read(row_size)
 
                 # convert first 4 bytes to int (little endian format)
@@ -312,10 +312,21 @@ def to_pico_txt(df: pd.DataFrame, fn: Union[str, Path]) -> None:
         fn: path to output .TXT file.
     """
 
-    # Fill possible missing values in stream. Fill with same token as
-    # PicoLog Recorder
+    # Round digits to 3 decimal places
+    df = df.round(3)
+
+    # Fill possible missing values. Use same token as PicoLog Recorder
     df.fillna(value='******', inplace=True)
 
-    # Save to .txt with timestamp of creation
-    df.to_csv(fn, sep='\t', encoding='cp437')
+    # Add a subheader with units
+    df_header = pd.DataFrame(data=[['( \u00B0C )' for i in df.columns]],
+                             index=['Seconds'],
+                             columns=df.columns)  # empty row
+    df = pd.concat([df_header, df])
+
+    # Give name to index
+    df.index.name = 'Time'
+    
+    # Save to .txt
+    df.to_csv(fn, sep='\t')
 

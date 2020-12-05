@@ -9,7 +9,7 @@ The output .TXT file follows the same format used by PicoTech's PLW Player.
 import sys
 import logging
 import argparse
-from . import utils
+import utils
 from pathlib import Path
 
 
