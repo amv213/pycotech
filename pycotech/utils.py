@@ -1,10 +1,10 @@
 import sys
-import time
 import yaml
 import struct
 import logging
 import configparser
 import pandas as pd
+import matplotlib.pyplot as plt
 from pathlib import Path
 from typing import Union, List, Dict
 
@@ -203,6 +203,9 @@ def read_plw(fn: Union[str, Path]) -> pd.DataFrame:
         df = pd.DataFrame(rows, columns=column_labels)
         df = df.set_index('Time').reset_index(drop=True)
 
+        # Replace NaN values (which show up as < -2^29>)
+        df[df.le(-2e29)] = None
+
     except FileNotFoundError:
         logger.exception("Could not find .PLW file")
         df = pd.DataFrame()
@@ -330,3 +333,15 @@ def to_pico_txt(df: pd.DataFrame, fn: Union[str, Path]) -> None:
     # Save to .txt
     df.to_csv(fn, sep='\t')
 
+
+def render_df(df: pd.DataFrame, ax: plt.Axes = None) -> plt.Axes:
+
+    if ax is None:
+        fig = plt.figure()
+        ax = fig.gca()
+
+    x = df.index
+
+    ax.plot(x, df['C1'].values)
+
+    return ax
