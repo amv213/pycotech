@@ -14,4 +14,4 @@ Pycotech's suite of utility functions provides seamless integration of
   allow you to move between one data format and the other as shown in the
    diagram below:
 
-![file schema](./_static/file_schema.png =100x)
+![file schema](./_static/file_schema.png)
