@@ -48,33 +48,33 @@ Pycotech also provides python command line alternatives to most of the
 
 To use pycotech's command line tools, install pycotech as described above
  and then run any of the following:
- 
-    ```cmd
-         $ plw-player -plw "my_plw_file"
-    ```
     
-    ```txt
-    usage: plw-player [-h] -plw PLW [-txt TXT]
+```cmd
+    $ plw-player -plw "my_plw_file"
+```
 
-    optional arguments:
-      -h, --help  show this help message and exit
-      -plw PLW    input .PLW file
-      -txt TXT    output .TXT file
-    ```
+```txt
+usage: plw-player [-h] -plw PLW [-txt TXT]
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -plw PLW    input .PLW file
+  -txt TXT    output .TXT file
+```
 
 or
 
-    ```cmd
-         $ plw-recorder
-    ```
-    
-    ```txt
-    usage: plw-recorder [-h] [-dir DIR]
-    
-    optional arguments:
-      -h, --help  show this help message and exit
-      -dir DIR    output directory
-    ```
+```cmd
+     $ plw-recorder
+```
+
+```txt
+usage: plw-recorder [-h] [-dir DIR]
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -dir DIR    output directory
+```
 
 ## 📚 Documentation
 
