@@ -14,11 +14,8 @@ Pycotech's suite of utility functions provides seamless integration of
   allow you to move between one data format and the other as shown in the
    diagram below:
 
-![file schema](./_static/file_schema.png)
-
-
 ```{image} ./_static/file_schema.png
 :alt: file schema
-:width: 200px
+:width: 600px
 :align: center
 ```
