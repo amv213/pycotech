@@ -80,7 +80,7 @@ html_sidebars = {
     "**": ["sidebar-search-bs.html", "sbt-sidebar-nav.html"]
 }
 
-html_title = "pycotech Documentation"
+html_title = "Pycotech Documentation"
 # html_logo = "../imgs/logo_single.png"
 # html_favicon = "../imgs/favico.png"
 show_navbar_depth = 2

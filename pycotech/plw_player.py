@@ -14,7 +14,7 @@ The output .TXT file follows the same format used by PicoTech's PLW Player.
 import sys
 import logging
 import argparse
-import utils
+from . import utils
 from pathlib import Path
 
 

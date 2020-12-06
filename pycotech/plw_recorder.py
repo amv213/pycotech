@@ -5,7 +5,7 @@ usage: plw_recorder.py [-h] [-dir DIR]
 
 optional arguments:
   -h, --help  show this help message and exit
-  -dir DIR    output directory
+  -dir DIR    output logs directory
 
 user input:
 
@@ -30,8 +30,8 @@ import time
 import string
 import logging
 import argparse
-import utils
-import loggers
+from . import utils
+from . import loggers
 from typing import List, Union
 from pathlib import Path
 
@@ -76,7 +76,7 @@ def main():
 
     # Parse command line arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("-dir", help="output directory",
+    parser.add_argument("-dir", help="output logs directory",
                         required=False, type=str, default=None)
 
     args = parser.parse_args()
