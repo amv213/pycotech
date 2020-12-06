@@ -1,7 +1,12 @@
 """Script converting an input .PLW file to .TXT.
 
-Usage:
-    $ plw-player -plw <path_to_plw> [-txt <path_to_output_txt>]
+usage: plw_player.py [-h] -plw PLW [-txt TXT]
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -plw PLW    input .PLW file
+  -txt TXT    output .TXT file
+
 
 The output .TXT file follows the same format used by PicoTech's PLW Player.
 """
