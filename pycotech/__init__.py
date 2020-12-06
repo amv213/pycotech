@@ -1,6 +1,6 @@
 import logging
-import pycotech.loggers
 import pycotech.utils
+import pycotech.loggers
 import pycotech.plw_player
 import pycotech.plw_recorder
 

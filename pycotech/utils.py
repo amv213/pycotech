@@ -106,7 +106,7 @@ def map_channels(fn: Union[str, Path]) -> Dict[str, List[str]]:
     return mapping
 
 
-def read_txt(fn: Union[str, Path]) -> pd.DataFrame:
+def read_pico_txt(fn: Union[str, Path]) -> pd.DataFrame:
     """Saves contents of a PicoLog PLW Player .TXT file into a properly
     formatted dataframe.
 
