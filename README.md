@@ -4,7 +4,7 @@ Pycotech offers tools and wrappers to interface with PT-104 PicoLog® Data
  Loggers and files, allowing you to easily build an end-to-end data processing
   pipeline in pure python.
   
-This work would not have been possible without Martin Schröder's
+This work would not have been possible without *Martin Schröder*'s
  amazing wrapper around the usbpt104 c library for the Pico PT-104A RTD Data 
  Acquisition Module. Don't hesitate to head over to his 
  [PT_104 Github repo](https://github.com/trombastic/Pico_PT104) to check out
