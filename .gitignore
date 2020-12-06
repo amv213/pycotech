@@ -13,4 +13,4 @@ public
 /*.egg
 
 # Packaging
-build
+./build
