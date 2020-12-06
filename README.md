@@ -49,10 +49,11 @@ Pycotech also provides python command line alternatives to most of the
 To use pycotech's command line tools, install pycotech as described above
  and then run any of the following:
  
-    ```bash
+    ```cmd
          $ plw-player -plw "my_plw_file"
     ```
-    ```bash
+    
+    ```txt
     usage: plw-player [-h] -plw PLW [-txt TXT]
 
     optional arguments:
@@ -63,10 +64,11 @@ To use pycotech's command line tools, install pycotech as described above
 
 or
 
-    ```bash
+    ```cmd
          $ plw-recorder
     ```
-    ```bash
+    
+    ```txt
     usage: plw-recorder [-h] [-dir DIR]
     
     optional arguments:
