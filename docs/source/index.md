@@ -49,6 +49,40 @@ Pycotech also provides python command line alternatives to most of the
 
 3. 🎉 If everything went well you are now all set-up to use pycotech! Enjoy!
 
+## 📟 CLI Tools
+
+To use pycotech's command line tools, install pycotech as described above
+ and then run any of the following:
+
+1. `plw-player`: converts `.PLW` files to `.TXT`
+ 
+    >```bash
+    >$ plw-player -plw "my_plw_file"
+    >```
+    
+    >```
+    >usage: plw-player [-h] -plw PLW [-txt TXT]
+    >
+    >optional arguments:
+    >  -h, --help  show this help message and exit
+    >  -plw PLW    input .PLW file
+    >  -txt TXT    output .TXT file
+    >```
+
+2. `plw-recorder`: continuous data acquisition from connected PT-104 Loggers:
+
+    >```bash
+    >$ plw-recorder
+    >```
+    
+    >```
+    >usage: plw-recorder [-h] [-dir DIR]
+    >
+    >optional arguments:
+    >  -h, --help  show this help message and exit
+    >  -dir DIR    output directory
+    >```
+
 ---
 
 ## 📚 Table of Contents

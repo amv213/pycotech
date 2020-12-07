@@ -211,6 +211,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cli-tools">
+   📟 CLI Tools
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-of-contents">
    📚 Table of Contents
   </a>
@@ -276,6 +281,46 @@ from PyPI:</p>
 </div></blockquote>
 </li>
 <li><p>🎉 If everything went well you are now all set-up to use pycotech! Enjoy!</p></li>
+</ol>
+</div>
+<div class="section" id="cli-tools">
+<h2>📟 CLI Tools<a class="headerlink" href="#cli-tools" title="Permalink to this headline">¶</a></h2>
+<p>To use pycotech’s command line tools, install pycotech as described above
+and then run any of the following:</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">plw-player</span></code>: converts <code class="docutils literal notranslate"><span class="pre">.PLW</span></code> files to <code class="docutils literal notranslate"><span class="pre">.TXT</span></code></p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ plw-player -plw <span class="s2">&quot;my_plw_file&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">plw</span><span class="o">-</span><span class="n">player</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">plw</span> <span class="n">PLW</span> <span class="p">[</span><span class="o">-</span><span class="n">txt</span> <span class="n">TXT</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+ <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+ <span class="o">-</span><span class="n">plw</span> <span class="n">PLW</span>    <span class="nb">input</span> <span class="o">.</span><span class="n">PLW</span> <span class="n">file</span>
+ <span class="o">-</span><span class="n">txt</span> <span class="n">TXT</span>    <span class="n">output</span> <span class="o">.</span><span class="n">TXT</span> <span class="n">file</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plw-recorder</span></code>: continuous data acquisition from connected PT-104 Loggers:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ plw-recorder
+</pre></div>
+</div>
+</div></blockquote>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">plw</span><span class="o">-</span><span class="n">recorder</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="nb">dir</span> <span class="n">DIR</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+ <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+ <span class="o">-</span><span class="nb">dir</span> <span class="n">DIR</span>    <span class="n">output</span> <span class="n">directory</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 </ol>
 </div>
 <hr class="docutils" />
