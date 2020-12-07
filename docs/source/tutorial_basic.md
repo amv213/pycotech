@@ -1,7 +1,6 @@
 # 🎈 Basic Usage
 
-You will find here a collection of code examples guiding you through core
- pycotech features!
+This section will guide you through core pycotech features!
  
 ## 📋 Working with files
 
@@ -16,6 +15,10 @@ Pycotech's suite of utility functions provides seamless integration of
 
 ```{image} ./_static/file_schema.png
 :alt: file schema
-:width: 600px
+:width: 400px
 :align: center
 ```
+
+As shown above, pycotech also exposes to command line tools to convert `.PLW
+` files to text, and to log data acquired interactively from PT-104 Data
+ Loggers. These are `plw-player` and `plw-recorder`.
