@@ -205,6 +205,16 @@
    📋 Working with files
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plw-player">
+   📝 PLW Player
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plw-recorder">
+   PLW Recorder
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -228,9 +238,42 @@ data-formats at will.</p>
 <p>All of these functions are offered by the <code class="docutils literal notranslate"><span class="pre">pycotech.utils</span></code> module, and
 allow you to move between one data format and the other as shown in the
 diagram below:</p>
-<a class="reference internal image-reference" href="_images/file_schema.png"><img alt="file schema" class="align-center" src="_images/file_schema.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/file_schema.png"><img alt="file schema" class="align-center" src="_images/file_schema.png" style="width: 500px;" /></a>
 <p>As shown above, pycotech also exposes to command line tools to convert <code class="docutils literal notranslate"><span class="pre">.PLW</span> </code> files to text, and to log data acquired interactively from PT-104 Data
 Loggers. These are <code class="docutils literal notranslate"><span class="pre">plw-player</span></code> and <code class="docutils literal notranslate"><span class="pre">plw-recorder</span></code>.</p>
+</div>
+<div class="section" id="plw-player">
+<h2>📝 PLW Player<a class="headerlink" href="#plw-player" title="Permalink to this headline">¶</a></h2>
+<p>Pycotech’s <code class="docutils literal notranslate"><span class="pre">plw-player</span></code> aims to offer equivalent functionalities to  the
+PicoLog® Player software, allowing you to read, convert, and extract data
+from existing <code class="docutils literal notranslate"><span class="pre">.PLW</span></code> files.</p>
+<p>Technically speaking, pycotech removes the need to save data in the
+<code class="docutils literal notranslate"><span class="pre">.PLW</span></code> file format, given that data can be read live from the data loggers
+and converted directly to dataframes. Nonetheless, <code class="docutils literal notranslate"><span class="pre">plw-player</span></code> is still
+useful to deal with legacy <code class="docutils literal notranslate"><span class="pre">.PLW</span></code> files yet to be converted, or for those
+that prefer to keep the data acquisition through PicoLog® software but
+would like to automate the steps downstream the pipeline.</p>
+<p>To convert <code class="docutils literal notranslate"><span class="pre">.PLW</span></code> files to <code class="docutils literal notranslate"><span class="pre">.TXT</span></code> with <code class="docutils literal notranslate"><span class="pre">plw-player</span></code>, you just need to install
+<code class="docutils literal notranslate"><span class="pre">pycotech</span></code> and then run the following from command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">plw</span><span class="o">-</span><span class="n">player</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">plw</span> <span class="n">PLW</span> <span class="p">[</span><span class="o">-</span><span class="n">txt</span> <span class="n">TXT</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">plw</span> <span class="n">PLW</span>    <span class="nb">input</span> <span class="o">.</span><span class="n">PLW</span> <span class="n">file</span>
+  <span class="o">-</span><span class="n">txt</span> <span class="n">TXT</span>    <span class="n">output</span> <span class="o">.</span><span class="n">TXT</span> <span class="n">file</span>
+</pre></div>
+</div>
+<p>The utility takes as <code class="docutils literal notranslate"><span class="pre">-plw</span></code> argument the path to the <code class="docutils literal notranslate"><span class="pre">.PLW</span></code> file to convert
+, and will generate a <code class="docutils literal notranslate"><span class="pre">.TXT</span></code> file whose path is given by the optional <code class="docutils literal notranslate"><span class="pre">-txt</span> </code> argument. By default, the output <code class="docutils literal notranslate"><span class="pre">.TXT</span></code> file will be generated in the
+same directory as the input <code class="docutils literal notranslate"><span class="pre">.PLW</span></code> file and be named in the same way.</p>
+<p>For example, running the following will convert your <code class="docutils literal notranslate"><span class="pre">my_plw_file.PLW</span></code> file to
+a <code class="docutils literal notranslate"><span class="pre">my_plw_file.TXT</span></code>, saved in the same directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ plw-player -plw <span class="s2">&quot;my_plw_file.PLW&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="plw-recorder">
+<h2>PLW Recorder<a class="headerlink" href="#plw-recorder" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

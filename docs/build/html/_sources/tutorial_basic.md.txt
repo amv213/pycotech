@@ -15,10 +15,50 @@ Pycotech's suite of utility functions provides seamless integration of
 
 ```{image} ./_static/file_schema.png
 :alt: file schema
-:width: 400px
+:width: 500px
 :align: center
 ```
 
 As shown above, pycotech also exposes to command line tools to convert `.PLW
 ` files to text, and to log data acquired interactively from PT-104 Data
  Loggers. These are `plw-player` and `plw-recorder`.
+ 
+## 📝 PLW Player
+
+Pycotech's `plw-player` aims to offer equivalent functionalities to  the
+ PicoLog® Player software, allowing you to read, convert, and extract data
+  from existing `.PLW` files. 
+
+Technically speaking, pycotech removes the need to save data in the
+`.PLW` file format, given that data can be read live from the data loggers
+ and converted directly to dataframes. Nonetheless, `plw-player` is still
+  useful to deal with legacy `.PLW` files yet to be converted, or for those
+   that prefer to keep the data acquisition through PicoLog® software but
+    would like to automate the steps downstream the pipeline.
+
+To convert `.PLW` files to `.TXT` with `plw-player`, you just need to install 
+`pycotech` and then run the following from command line:
+
+```
+usage: plw-player [-h] -plw PLW [-txt TXT]
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -plw PLW    input .PLW file
+  -txt TXT    output .TXT file
+```
+
+The utility takes as `-plw` argument the path to the `.PLW` file to convert
+, and will generate a `.TXT` file whose path is given by the optional `-txt
+` argument. By default, the output `.TXT` file will be generated in the
+ same directory as the input `.PLW` file and be named in the same way.
+
+For example, running the following will convert your `my_plw_file.PLW` file to
+a `my_plw_file.TXT`, saved in the same directory:
+
+```bash
+$ plw-player -plw "my_plw_file.PLW"
+```
+
+
+## PLW Recorder
