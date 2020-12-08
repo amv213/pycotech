@@ -212,7 +212,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plw-recorder">
-   PLW Recorder
+   💾 PLW Recorder
   </a>
  </li>
 </ul>
@@ -254,7 +254,7 @@ useful to deal with legacy <code class="docutils literal notranslate"><span clas
 that prefer to keep the data acquisition through PicoLog® software but
 would like to automate the steps downstream the pipeline.</p>
 <p>To convert <code class="docutils literal notranslate"><span class="pre">.PLW</span></code> files to <code class="docutils literal notranslate"><span class="pre">.TXT</span></code> with <code class="docutils literal notranslate"><span class="pre">plw-player</span></code>, you just need to install
-<code class="docutils literal notranslate"><span class="pre">pycotech</span></code> and then run the following from command line:</p>
+<code class="docutils literal notranslate"><span class="pre">pycotech</span></code> and then run the command line tool as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">plw</span><span class="o">-</span><span class="n">player</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">plw</span> <span class="n">PLW</span> <span class="p">[</span><span class="o">-</span><span class="n">txt</span> <span class="n">TXT</span><span class="p">]</span>
 
 <span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
@@ -273,7 +273,51 @@ a <code class="docutils literal notranslate"><span class="pre">my_plw_file.TXT</
 </div>
 </div>
 <div class="section" id="plw-recorder">
-<h2>PLW Recorder<a class="headerlink" href="#plw-recorder" title="Permalink to this headline">¶</a></h2>
+<h2>💾 PLW Recorder<a class="headerlink" href="#plw-recorder" title="Permalink to this headline">¶</a></h2>
+<p>Pycotech’s <code class="docutils literal notranslate"><span class="pre">plw-recorder</span></code> allows you to bypass the PLW Recorder® data
+acquisition software and gather data directly from PT-104 Data Loggers
+connected to your machine via USB.</p>
+<p>To start the data acquisition with <code class="docutils literal notranslate"><span class="pre">plw-recorder</span></code>, you just need to install
+<code class="docutils literal notranslate"><span class="pre">pycotech</span></code> and then run the command line tool as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">plw</span><span class="o">-</span><span class="n">recorder</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="nb">dir</span> <span class="n">DIR</span><span class="p">]</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="nb">dir</span> <span class="n">DIR</span>    <span class="n">output</span> <span class="n">directory</span>
+</pre></div>
+</div>
+<p>The utility takes only the optional <code class="docutils literal notranslate"><span class="pre">-dir</span></code> argument, specifying the path to
+the directory in which to save logs.</p>
+<p>Once executed, the command line tool will scan for connected devices and ask
+for permission to launch the data acquisition.</p>
+<p>In addition, user input is offered to give custom label
+identifiers to the acquisition channels from each data logger. If chosen
+, the user will need to provide interactively the identifiers for each
+acquisition device. For example, providing <code class="docutils literal notranslate"><span class="pre">P</span></code> will label the channels of
+the given data logger as <code class="docutils literal notranslate"><span class="pre">P1</span></code>, <code class="docutils literal notranslate"><span class="pre">P2</span></code>, …
+Providing custom labels is optional, and only helps maintaining consistency
+with existing data with pre-existing labels. If skipped, the channels from
+different devices will be labelled in alphabetical order.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Data acquired through <code class="docutils literal notranslate"><span class="pre">plw-player</span></code> has a total sample rate of 0.75 s times
+the number of active channels on the acquisition device. This means that
+when collecting data from typical PT-104 data loggers with four active
+channels per device, samples will be logged with a 3 s interval.</p>
+<p>Keep in mind that this is slower than data acquisition through the official
+PLW Recorder® software, which is able to sample data at faster rates.</p>
+</div>
+<p>Finally, data is periodically batch-logged in <code class="docutils literal notranslate"><span class="pre">.TXT</span></code> files timestamped at
+the date of creation (so with the timestamp of the last log entry). For
+data sampled every 3 seconds, each log will be generated every 24 hours
+. If the script is terminated from the command line, <code class="docutils literal notranslate"><span class="pre">plw-recorder</span></code> will
+make sure that the currently running log is compiled and saved.</p>
+<p>The following minimal example will start logging data from available data
+loggers, and save the resulting logs in a <code class="docutils literal notranslate"><span class="pre">/PycoLogs</span></code> folder in the current
+working directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ plw-recorder
+</pre></div>
+</div>
 </div>
 </div>
 

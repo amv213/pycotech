@@ -37,7 +37,7 @@ Technically speaking, pycotech removes the need to save data in the
     would like to automate the steps downstream the pipeline.
 
 To convert `.PLW` files to `.TXT` with `plw-player`, you just need to install 
-`pycotech` and then run the following from command line:
+`pycotech` and then run the command line tool as follows:
 
 ```
 usage: plw-player [-h] -plw PLW [-txt TXT]
@@ -60,5 +60,58 @@ a `my_plw_file.TXT`, saved in the same directory:
 $ plw-player -plw "my_plw_file.PLW"
 ```
 
+## 💾 PLW Recorder
 
-## PLW Recorder
+Pycotech's `plw-recorder` allows you to bypass the PLW Recorder® data
+ acquisition software and gather data directly from PT-104 Data Loggers
+  connected to your machine via USB. 
+
+To start the data acquisition with `plw-recorder`, you just need to install 
+`pycotech` and then run the command line tool as follows:
+
+```
+usage: plw-recorder [-h] [-dir DIR]
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -dir DIR    output directory
+```
+
+The utility takes only the optional `-dir` argument, specifying the path to
+ the directory in which to save logs. 
+
+Once executed, the command line tool will scan for connected devices and ask
+ for permission to launch the data acquisition.
+ 
+In addition, user input is offered to give custom label
+ identifiers to the acquisition channels from each data logger. If chosen
+ , the user will need to provide interactively the identifiers for each
+  acquisition device. For example, providing `P` will label the channels of
+   the given data logger as `P1`, `P2`, ...
+Providing custom labels is optional, and only helps maintaining consistency
+ with existing data with pre-existing labels. If skipped, the channels from
+  different devices will be labelled in alphabetical order.  
+
+```{note}
+Data acquired through `plw-player` has a total sample rate of 0.75 s times
+ the number of active channels on the acquisition device. This means that
+ when collecting data from typical PT-104 data loggers with four active
+ channels per device, samples will be logged with a 3 s interval.
+
+Keep in mind that this is slower than data acquisition through the official 
+PLW Recorder® software, which is able to sample data at faster rates.
+```
+
+Finally, data is periodically batch-logged in `.TXT` files timestamped at
+ the date of creation (so with the timestamp of the last log entry). For
+  data sampled every 3 seconds, each log will be generated every 24 hours
+  . If the script is terminated from the command line, `plw-recorder` will
+   make sure that the currently running log is compiled and saved.
+
+The following minimal example will start logging data from available data
+ loggers, and save the resulting logs in a `/PycoLogs` folder in the current
+  working directory:
+
+```bash
+$ plw-recorder
+```
