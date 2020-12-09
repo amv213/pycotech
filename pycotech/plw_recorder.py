@@ -78,6 +78,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-dir", help="output logs directory",
                         required=False, type=str, default=None)
+    parser.add_argument("-r", help="logging rate (hours)",
+                        required=False, type=int, default=1)
 
     args = parser.parse_args()
 
@@ -127,7 +129,8 @@ def main():
     devices = {name: loggers.PT104() for name in serials}
 
     rows = []
-    batch_size = 28800  # entries per file, = 1 log a day (assuming 3s sampling period)
+    batch_size = args.r * 3600 / 3  # entries per file (assuming 3s sampling
+    # period)
     try:
 
         # Connect to all devices
