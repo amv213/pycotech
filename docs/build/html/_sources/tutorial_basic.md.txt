@@ -19,7 +19,10 @@ Pycotech's suite of utility functions provides seamless integration of
 :align: center
 ```
 
-As shown above, pycotech also exposes to command line tools to convert `.PLW
+Conventionally, data is acquired f0rom the PT104 Data Loggers via the PLW
+ Recorder® software - and saved to `.PLW`. 
+ 
+Pycotech also exposes to command line tools to convert `.PLW
 ` files to text, and to log data acquired interactively from PT-104 Data
  Loggers. These are `plw-player` and `plw-recorder`.
  
