@@ -256,10 +256,33 @@ library <code class="docutils literal notranslate"><span class="pre">logging</sp
 named as follows:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pycotech</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pycotech.loggers</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pycotech.utils</span></code></p></li>
 </ul>
 <p>If your using application does not use logging, then only events of severity
 <code class="docutils literal notranslate"><span class="pre">WARNING</span></code> and greater will be printed to <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code>, thanks to the
 logger’s last resort handler. This is regarded as the best default behaviour.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is generally recommended to use logging in your applications, instead of
+abusing the <code class="docutils literal notranslate"><span class="pre">print()</span></code> command. The following code snippet will set you up
+with a nicely formatted logger:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="c1"># Setup your basic logger</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+   <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;[</span><span class="si">%(asctime)s</span><span class="s1">] </span><span class="si">%(levelname)s</span><span class="s1"> | </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+   <span class="n">datefmt</span><span class="o">=</span><span class="s1">&#39;%D %H:%M:%S&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Spawn logger for current module </span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>  
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;INFO&quot;</span><span class="p">)</span>  <span class="c1"># set default logging level</span>
+
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Amazing!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
