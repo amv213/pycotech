@@ -40,9 +40,6 @@ extensions = [
     'sphinx_panels',
 ]
 
-# Set consistent (and only available) emoji style
-sphinxemoji_style = 'twemoji'
-
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -83,8 +80,8 @@ html_sidebars = {
 }
 
 html_title = "Pycotech Documentation"
-# html_logo = "../imgs/logo_single.png"
-# html_favicon = "../imgs/favico.png"
+html_logo = "_static/logo.png"
+html_favicon = "_static/favicon.png"
 show_navbar_depth = 2
 
 # To build the documentation run the following:
