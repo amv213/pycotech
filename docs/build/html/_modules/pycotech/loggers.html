@@ -25,9 +25,13 @@
     href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/twemoji.css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
 
@@ -35,9 +39,10 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
-    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
-    <script src="../../_static/twemoji.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -183,8 +188,7 @@
               <div>
                 
   <h1>Source code for pycotech.loggers</h1><div class="highlight"><pre>
-<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot; A Wrapper around the usbpt104 library from Pico for the Pico PT-104A RTD</span>
+<span></span><span class="sd">&quot;&quot;&quot; A Wrapper around the usbpt104 library from Pico for the Pico PT-104A RTD</span>
 <span class="sd">DATA Acquisition Module</span>
 
 <span class="sd">It also works for the Omega PT-104A.</span>
@@ -198,7 +202,7 @@
 <span class="sd">&gt; PicoSDK 10.6.13 (64-bit)</span>
 <span class="sd">they should get installed in (Windows 10)</span>
 <span class="sd">C:\\Program Files\\Pico Technology\\SDK\\lib then copy usbpt104.dll to</span>
-<span class="sd">current  working directory</span>
+<span class="sd">pycotech/libs</span>
 
 <span class="sd">The API documentation:</span>
 <span class="sd">https://www.picotech.com/download/manuals/usb-pt104-rtd-data-logger-programmers-guide.pdf</span>
@@ -226,7 +230,6 @@
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Martin Schröder&quot;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;m.schroeder@tu-berlin.de&quot;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Beta&quot;</span>
-<span class="n">__docformat__</span> <span class="o">=</span> <span class="s1">&#39;reStructuredText&#39;</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">ctypes</span> <span class="kn">import</span> <span class="o">*</span>
@@ -406,13 +409,13 @@
                                         <span class="n">PicoInfo</span><span class="o">.</span><span class="n">PICO_KERNEL_DRIVER_VERSION</span><span class="p">)</span>
         <span class="n">kernel_driver_version</span> <span class="o">=</span> <span class="n">info_string</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">print_result</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;driver_version: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">driver_version</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;usb_version: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">usb_version</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hardware_version:  </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">hardware_version</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;variant_info: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">variant_info</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;batch_and_serial: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">batch_and_serial</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cal_date: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">cal_date</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;kernel_driver_version: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">kernel_driver_version</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;driver_version: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">driver_version</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;usb_version: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">usb_version</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;hardware_version:  </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">hardware_version</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;variant_info: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">variant_info</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;batch_and_serial: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">batch_and_serial</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;cal_date: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">cal_date</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;kernel_driver_version: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">kernel_driver_version</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">driver_version</span><span class="o">=</span><span class="n">driver_version</span><span class="p">,</span>
                     <span class="n">usb_version</span><span class="o">=</span><span class="n">usb_version</span><span class="p">,</span>
@@ -456,12 +459,12 @@
             <span class="n">serial</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
         <span class="n">status_unit</span> <span class="o">=</span> <span class="n">libusbpt104</span><span class="o">.</span><span class="n">UsbPt104OpenUnit</span><span class="p">(</span><span class="n">byref</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">),</span> <span class="n">serial</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">status_unit</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Picolog PT104 opened successfully&#39;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Picolog PT104 opened successfully&#39;</span><span class="p">)</span>
             <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_unit_info</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_channels</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt;&gt; Picolog ERROR opening device &lt;&lt;&lt;&lt;&#39;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt;&gt; Picolog ERROR opening device &lt;&lt;&lt;&lt;&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">return</span> <span class="n">status_unit</span></div>
 
@@ -588,7 +591,7 @@
         <span class="k">return</span> <span class="kc">True</span></div>
 
     <span class="k">def</span> <span class="nf">_wait_for_conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;wait until the adc cionversion is finished</span>
+        <span class="sd">&quot;&quot;&quot;wait until the adc conversion is finished</span>
 
 <span class="sd">        :param channel: channel number (Channels)</span>
 <span class="sd">        :return:</span>

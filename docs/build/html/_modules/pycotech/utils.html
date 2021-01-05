@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pycotech.utils &#8212; Pycotech Documentation</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Pycotech Documentation</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   📑 Welcome to Pycotech!
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  MAIN DOCS
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../documentation.html">
+   Documentation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../modules.html">
+     Modules
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../pycotech.html">
+       pycotech package
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  TUTORIALS
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tutorial_basic.html">
+   Basic Usage
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://gitlab.com/amv213/pycotech"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://gitlab.com/amv213/pycotech/issues/new?title=Issue%20on%20page%20%2F_modules/pycotech/utils.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <h1>Source code for pycotech.utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">configparser</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+
+<span class="c1"># Spawn module-level logger</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="fetch_metadata"><a class="viewcode-back" href="../../pycotech.html#pycotech.utils.fetch_metadata">[docs]</a><span class="k">def</span> <span class="nf">fetch_metadata</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Extracts metadata information from a .PLW file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fn: path to the .PLW file to parse.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        metadata associated with data contained in the .PLW file,</span>
+<span class="sd">        as a single string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">metadata_bytes</span> <span class="o">=</span> <span class="mi">37714</span>  <span class="c1"># (can check opening .PLW in hex editor)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="c1"># Open as binary stream</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+            <span class="c1"># go to start of metadata (metadata is at the end of the file)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="o">-</span><span class="n">metadata_bytes</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+            <span class="c1"># Read in binary chunk and decode</span>
+            <span class="n">metadata</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;cp437&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Metadata is structured as a .ini file.</span>
+            <span class="c1"># Add temporary section header at the beginning to corrupted</span>
+            <span class="c1"># sections</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">(</span><span class="n">allow_no_value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                               <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">read_string</span><span class="p">(</span><span class="s1">&#39;[temporary_section]</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">metadata</span><span class="p">)</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">remove_section</span><span class="p">(</span><span class="s1">&#39;temporary_section&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Return metadata as dict</span>
+            <span class="n">metadata</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">_sections</span>
+
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Could not find .PLW file&quot;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">metadata</span></div>
+
+
+<div class="viewcode-block" id="save_metadata"><a class="viewcode-back" href="../../pycotech.html#pycotech.utils.save_metadata">[docs]</a><span class="k">def</span> <span class="nf">save_metadata</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Extracts metadata information from a .PLW file and saves it as YAML.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fn: path to the .PLW file to parse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">fetch_metadata</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">fn</span><span class="p">)</span>
+
+    <span class="n">fn_meta</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.yml&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn_meta</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;cp437&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="map_channels"><a class="viewcode-back" href="../../pycotech.html#pycotech.utils.map_channels">[docs]</a><span class="k">def</span> <span class="nf">map_channels</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Parses metadata in the .PLW file to build mapping between acquisition</span>
+<span class="sd">    devices and associated channels. Devices and channels are mapped in same</span>
+<span class="sd">    order as acquisition.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fn: path to the .PLW file to parse.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dictionary mapping the serial of each acquisition device to the</span>
+<span class="sd">        labels of its associated channels.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Extract metadata</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">fetch_metadata</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+
+    <span class="c1"># Number of acquisition channels</span>
+    <span class="n">num_channels</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;General&#39;</span><span class="p">][</span><span class="s1">&#39;noofparameters&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Number of converters (devices)</span>
+    <span class="n">num_converters</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;General&#39;</span><span class="p">][</span><span class="s1">&#39;noofconverters&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Usually 4 channels per device</span>
+    <span class="n">channels_per_converter</span> <span class="o">=</span> <span class="n">num_channels</span> <span class="o">//</span> <span class="n">num_converters</span>
+
+    <span class="c1"># keys: for each device get its serial id</span>
+    <span class="c1"># values: get the name of each channel (parameter) for each parameter</span>
+    <span class="c1"># associated with each device (unit)</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="n">metadata</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Converter </span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">][</span><span class="s1">&#39;serial&#39;</span><span class="p">]:</span>
+                   <span class="p">[</span><span class="n">metadata</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Parameter </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span>
+                    <span class="p">[</span><span class="n">metadata</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Unit </span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1"> Channel </span><span class="si">{</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">][</span><span class="s1">&#39;paramno&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span>
+                     <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">channels_per_converter</span><span class="p">)]</span>
+                    <span class="p">]</span>
+               <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_converters</span><span class="p">)}</span>
+
+    <span class="k">return</span> <span class="n">mapping</span></div>
+
+
+<div class="viewcode-block" id="read_pico_txt"><a class="viewcode-back" href="../../pycotech.html#pycotech.utils.read_pico_txt">[docs]</a><span class="k">def</span> <span class="nf">read_pico_txt</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Saves contents of a PicoLog PLW Player .TXT file into a properly</span>
+<span class="sd">    formatted dataframe.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fn: path to the .TXT file to parse.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dataframe where each row has temperature measurements (°C) across</span>
+<span class="sd">        PicoLogger acquisition channels.</span>
+
+<span class="sd">        index:      None (enumeration of entries)</span>
+<span class="sd">        columns:    `&lt;channel_name&gt;`, ... x num_channels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># use cp437 decoding or similar to make it work nicely</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;cp437&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;unicode&#39;</span><span class="p">,</span>
+                     <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># drop first row (with units)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># set index on the `Time` column</span>
+
+    <span class="c1"># Some PicoLog entries are assigned duplicate `Time` ids - so reset to</span>
+    <span class="c1"># unique values:</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Convert entries to numeric, coercing PicoLog &#39;******&#39; values to np.NaNs</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="read_plw"><a class="viewcode-back" href="../../pycotech.html#pycotech.utils.read_plw">[docs]</a><span class="k">def</span> <span class="nf">read_plw</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Saves contents of a PicoLog PLW Player .PLW file into a properly</span>
+<span class="sd">    formatted dataframe.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fn: path to the .PLW file to parse.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dataframe where each row has temperature measurements (°C) across</span>
+<span class="sd">        PicoLogger acquisition channels.</span>
+
+<span class="sd">        index:      None (enumeration of entries)</span>
+<span class="sd">        columns:    `&lt;channel_name&gt;`, ... x num_channels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Try opening file</span>
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="c1"># Ordered mapping between acquisition devices and associated channels</span>
+        <span class="n">devices_dict</span> <span class="o">=</span> <span class="n">map_channels</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">fn</span><span class="p">)</span>
+
+        <span class="c1"># Names of channels</span>
+        <span class="n">channels</span> <span class="o">=</span> <span class="p">[</span><span class="n">ch</span> <span class="k">for</span> <span class="n">chs</span> <span class="ow">in</span> <span class="n">devices_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">chs</span><span class="p">]</span>
+        <span class="n">num_channels</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span>
+
+        <span class="n">column_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">channels</span>
+
+        <span class="c1"># Open as binary stream</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+            <span class="n">header_length</span> <span class="o">=</span> <span class="mi">1684</span>  <span class="c1"># bytes (can check with hex editor)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">header_length</span><span class="p">)</span>  <span class="c1"># skip header and go to start of data</span>
+
+            <span class="n">num_fields</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">num_channels</span>
+            <span class="n">row_size</span> <span class="o">=</span> <span class="n">num_fields</span> <span class="o">*</span> <span class="mi">4</span>  <span class="c1"># Each field is a 32 bit float</span>
+
+            <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># read in byte arrays for each row and convert entries</span>
+            <span class="k">while</span> <span class="n">idx</span> <span class="o">&lt;=</span> <span class="mi">99999</span><span class="p">:</span>  <span class="c1"># usual max number of samples in a .PLW</span>
+                <span class="n">byte_array</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">row_size</span><span class="p">)</span>
+
+                <span class="c1"># convert first 4 bytes to int (little endian format)</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;&lt;i&#39;</span><span class="p">,</span> <span class="n">byte_array</span><span class="p">[:</span><span class="mi">4</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+                <span class="c1"># convert rest of byte_array (column values) to float32 (little</span>
+                <span class="c1"># endian format)</span>
+                <span class="c1"># Convert 4-byte hex to IEEE-754 floating point</span>
+                <span class="c1"># https://www.h-schmidt.net/FloatConverter/IEEE754.html</span>
+                <span class="n">vals</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&lt;</span><span class="si">{</span><span class="n">num_channels</span><span class="si">}</span><span class="s1">f&#39;</span><span class="p">,</span> <span class="n">byte_array</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span>
+
+                <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+
+                <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="c1"># The algorithm will glob one more line (especially if PLW not filled</span>
+        <span class="c1"># to max capacity) [extra line is from metadata section]</span>
+        <span class="k">del</span> <span class="n">rows</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># ------</span>
+
+        <span class="c1"># Build dataframe:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">column_labels</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Replace NaN values (which show up as &lt; -2^29&gt;)</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">le</span><span class="p">(</span><span class="o">-</span><span class="mf">2e29</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Could not find .PLW file&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="to_pico_stream"><a class="viewcode-back" href="../../pycotech.html#pycotech.utils.to_pico_stream">[docs]</a><span class="k">def</span> <span class="nf">to_pico_stream</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Flattens a PicoLog PLW Player data dataframe to a virtual</span>
+<span class="sd">    data-stream - simulating sequential acquisition of data channel-by-channel.</span>
+
+<span class="sd">    For an input dataframe of shape (num_samples, num_channels), the output</span>
+<span class="sd">    data-stream will have length num_samples x num_channels.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df: PicoLog PLW Player dataframe, where each row has temperature</span>
+<span class="sd">            measurements across PicoLogger acquisition channels.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Equivalent flattened data-stream dataframe, where each row has a</span>
+<span class="sd">        temperature measurement from a single PicoLogger acquisition channel.</span>
+
+<span class="sd">        index:      None (enumeration of entries)</span>
+<span class="sd">        columns:    `channel`, `temp`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">channels_order</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c1"># Melt the dataframe and rename columns</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;channel&#39;</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;temp&#39;</span><span class="p">]</span>
+
+    <span class="c1"># attach a categorical ordered data type to channel values so that they</span>
+    <span class="c1"># maintain the acquisition order when sorting</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="n">channels_order</span><span class="p">,</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;channel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;channel&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="c1"># Sort values by time and channel order</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;channel&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Reset `Time` index to give each entry virtual time id</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="from_pico_stream"><a class="viewcode-back" href="../../pycotech.html#pycotech.utils.from_pico_stream">[docs]</a><span class="k">def</span> <span class="nf">from_pico_stream</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Packs a channel-by-channel data-stream into a PicoLog PLW Player data</span>
+<span class="sd">    dataframe, where each row has temperature measurements across</span>
+<span class="sd">    all PicoLogger acquisition channels.</span>
+
+<span class="sd">    For an input data-stream of length num_samples x num_channels, the output</span>
+<span class="sd">    dataframe will have shape (num_samples, num_channels).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df: PicoLog PLW Player data-stream, where each row has a</span>
+<span class="sd">        temperature measurement from a single PicoLogger acquisition channel.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Equivalent packed-dataframe, where each row has temperature</span>
+<span class="sd">        measurements across all PicoLogger acquisition channels.</span>
+
+<span class="sd">        index:      None (enumeration of entries)</span>
+<span class="sd">        columns:    `&lt;channel_name&gt;`, ... x num_channels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Reindex timestamps with one timestamp per block of channels</span>
+    <span class="n">channels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;channel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">//</span> <span class="nb">len</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span>
+
+    <span class="c1"># Pivot table</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;channel&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="build_pico_stream"><a class="viewcode-back" href="../../pycotech.html#pycotech.utils.build_pico_stream">[docs]</a><span class="k">def</span> <span class="nf">build_pico_stream</span><span class="p">(</span><span class="n">rows</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Packs a list of channel-by-channel data-samples into a pico-stream</span>
+<span class="sd">    dataframe format, where each row is a temperature measurement from a</span>
+<span class="sd">    single PicoLogger acquisition channel.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        rows:   list of records. Each record should be a list with the</span>
+<span class="sd">                acquisition channel name and associated measurement value.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        input data packed into a pico-stream dataframe.</span>
+
+<span class="sd">        index:      None (enumeration of entries)</span>
+<span class="sd">        columns:    `channel`, `temp`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Pack all samples into dataframe</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;channel&#39;</span><span class="p">,</span> <span class="s1">&#39;temp&#39;</span><span class="p">])</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="to_pico_txt"><a class="viewcode-back" href="../../pycotech.html#pycotech.utils.to_pico_txt">[docs]</a><span class="k">def</span> <span class="nf">to_pico_txt</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Saves the input dataframe to .TXT - mimicking the data format used by</span>
+<span class="sd">    PicoLog PLW Player.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df: dataframe to save.</span>
+<span class="sd">        fn: path to output .TXT file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Round digits to 3 decimal places</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Fill possible missing values. Use same token as PicoLog Recorder</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;******&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Add a subheader with units</span>
+    <span class="n">df_header</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;( </span><span class="se">\u00B0</span><span class="s1">C )&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]],</span>
+                             <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sample&#39;</span><span class="p">],</span>
+                             <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>  <span class="c1"># empty row</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_header</span><span class="p">,</span> <span class="n">df</span><span class="p">])</span>
+
+    <span class="c1"># Give name to index</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Time&#39;</span>
+    
+    <span class="c1"># Save to .txt</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="show_plot"><a class="viewcode-back" href="../../pycotech.html#pycotech.utils.show_plot">[docs]</a><span class="k">def</span> <span class="nf">show_plot</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Plots values sampled from the acquisition devices over time.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df: can either be a dataframe (where each column contains values</span>
+<span class="sd">            from a single channel) or a pico-stream (where the first column</span>
+<span class="sd">            has channel labels, and the second column has associated</span>
+<span class="sd">            measurement values).</span>
+<span class="sd">        ax: axes onto which to render plots</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        updated plot axes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># If input data is a pico-stream, pack to dataframe format</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">from_pico_stream</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Sample #&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Measurement Value&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ax</span></div>
+</pre></div>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Alvise Vianello<br/>
+        
+            &copy; Copyright 2020, Alvise Vianello.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

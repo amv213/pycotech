@@ -31,6 +31,16 @@ setuptools.setup(
         'setuptools',
         'yaml',
     ],
+    extras_require={
+        "doc": [
+            'myst-parser',
+            'sphinx',
+            'sphinx-book-theme',
+            'sphinx-copybutton',
+            'sphinx-togglebutton',
+            'sphinx-panels',
+        ],
+    },
     include_package_data=True,
     entry_points={
         'console_scripts': ['plw-player=pycotech.plw_player:main',

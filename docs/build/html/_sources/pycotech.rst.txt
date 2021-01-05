@@ -1,10 +1,18 @@
 pycotech package
 ================
 
+Module contents
+---------------
+
+.. automodule:: pycotech
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Submodules
 ----------
 
-pycotech.loggers module
+pycotech.loggers
 -----------------------
 
 .. automodule:: pycotech.loggers
@@ -12,10 +20,10 @@ pycotech.loggers module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
+pycotech.utils
+-----------------------
 
-.. automodule:: pycotech
+.. automodule:: pycotech.utils
    :members:
    :undoc-members:
    :show-inheritance:

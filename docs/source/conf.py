@@ -34,8 +34,10 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
-    'sphinxemoji.sphinxemoji',
-    "myst_parser",
+    'myst_parser',
+    'sphinx_copybutton',
+    'sphinx_togglebutton',
+    'sphinx_panels',
 ]
 
 # Set consistent (and only available) emoji style
