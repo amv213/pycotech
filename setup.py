@@ -5,7 +5,7 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setuptools.setup(
     name="pycotech",
-    version="0.1.0",
+    version="0.1.1",
     description="Tools and wrappers to interface with PT-104 PicoLog® Data "
                 "Loggers and files.",
     long_description=long_description,
