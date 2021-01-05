@@ -269,12 +269,12 @@ through PicoLog® software but would like to automate the steps downstream the p
 <p>To convert <code class="docutils literal notranslate"><span class="pre">.PLW</span></code> files to <code class="docutils literal notranslate"><span class="pre">.TXT</span></code> with <code class="docutils literal notranslate"><span class="pre">plw-player</span></code>, you just need to
 have installed <code class="docutils literal notranslate"><span class="pre">pycotech</span></code> and then run the command line <code class="docutils literal notranslate"><span class="pre">plw-player</span></code>
 tool as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">plw</span><span class="o">-</span><span class="n">player</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="o">-</span><span class="n">plw</span> <span class="n">PLW</span> <span class="p">[</span><span class="o">-</span><span class="n">txt</span> <span class="n">TXT</span><span class="p">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>usage: plw-player <span class="o">[</span>-h<span class="o">]</span> -plw PLW <span class="o">[</span>-txt TXT<span class="o">]</span>
 
-<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
-  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
-  <span class="o">-</span><span class="n">plw</span> <span class="n">PLW</span>    <span class="nb">input</span> <span class="o">.</span><span class="n">PLW</span> <span class="n">file</span>
-  <span class="o">-</span><span class="n">txt</span> <span class="n">TXT</span>    <span class="n">output</span> <span class="o">.</span><span class="n">TXT</span> <span class="n">file</span>
+optional arguments:
+  -h, --help  show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -plw PLW    input .PLW file
+  -txt TXT    output .TXT file
 </pre></div>
 </div>
 <p>The utility takes as <code class="docutils literal notranslate"><span class="pre">-plw</span></code> argument the path to the <code class="docutils literal notranslate"><span class="pre">.PLW</span></code> file to
@@ -296,15 +296,17 @@ Loggers connected to your machine via USB.</p>
 <p>To start the data acquisition with <code class="docutils literal notranslate"><span class="pre">plw-recorder</span></code>, you just need to
 have installed <code class="docutils literal notranslate"><span class="pre">pycotech</span></code> and then run the command line tool as
 follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">plw</span><span class="o">-</span><span class="n">recorder</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="nb">dir</span> <span class="n">DIR</span><span class="p">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>usage: plw-recorder <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-dir DIR<span class="o">]</span> <span class="o">[</span>-r R<span class="o">]</span>
 
-<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
-  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>  <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
-  <span class="o">-</span><span class="nb">dir</span> <span class="n">DIR</span>    <span class="n">output</span> <span class="n">directory</span>
+optional arguments:
+  -h, --help  show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -dir DIR    output logs directory
+  -r R        logging rate <span class="o">(</span>hours<span class="o">)</span>
 </pre></div>
 </div>
-<p>The utility takes only the optional <code class="docutils literal notranslate"><span class="pre">-dir</span></code> argument, specifying the
-path to the directory in which to save logs.</p>
+<p>The utility takes two optional arguments:
+- <code class="docutils literal notranslate"><span class="pre">-dir</span></code>, the path to the directory in which to save logs
+- <code class="docutils literal notranslate"><span class="pre">-r</span></code>, the rate in hours at which to save new log files</p>
 <p>Once executed, the command line tool will scan for connected devices
 and ask for permission to launch the data acquisition.</p>
 <p>In addition, user input is offered to give custom label identifiers to
@@ -312,7 +314,7 @@ the acquisition channels from each data logger. If chosen, the user
 will need to provide interactively the identifiers for each
 acquisition device. For example, providing the letter <em>P</em> will label
 the channels of the given data logger as <code class="docutils literal notranslate"><span class="pre">P1</span></code>, <code class="docutils literal notranslate"><span class="pre">P2</span></code>, …</p>
-<p>Providing custom labels is optional, and only helps maintaining
+<p>Providing custom labels is optional, and only helps to maintain
 consistency with existing data with pre-existing labels. If skipped,
 the channels from different devices will be labelled in alphabetical
 order.</p>
@@ -330,14 +332,14 @@ faster rates.</p>
 </div>
 <p>Finally, data is periodically batch-logged in <code class="docutils literal notranslate"><span class="pre">.TXT</span></code> files timestamped
 at the date of creation (so with the timestamp of the last log entry).
-For data sampled every three seconds (4 active channels), each log will be
-generated every 24
-hours. If the script is terminated from the command line,
+For data sampled every three seconds (4 active channels), each log<br />
+will be generated every <code class="docutils literal notranslate"><span class="pre">-r</span></code> hours. If the script is terminated from<br />
+the command line,
 <code class="docutils literal notranslate"><span class="pre">plw-recorder</span></code> will make sure that the currently running log is compiled and saved.</p>
 <p>The following minimal example will start logging data from available
-data loggers, and save the resulting logs in a <code class="docutils literal notranslate"><span class="pre">/PycoLogs</span></code> folder in
-the current working directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ plw-recorder
+data loggers, and save the resulting logs every 4 hours in a default
+<code class="docutils literal notranslate"><span class="pre">/PycoLogs</span></code> folder in the current working directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ plw-recorder -r <span class="m">4</span>
 </pre></div>
 </div>
 </div>

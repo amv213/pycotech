@@ -29,7 +29,6 @@ setuptools.setup(
         'pandas',
         'pyyaml',
         'setuptools',
-        'yaml',
     ],
     extras_require={
         "doc": [

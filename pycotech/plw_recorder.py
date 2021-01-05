@@ -1,11 +1,12 @@
 """Script continuously logging PT104 PicoLog data from connected devices.
 Data is saved as timestamped .TXT files in the provided output directory.
 
-usage: plw_recorder.py [-h] [-dir DIR]
+usage: plw-recorder [-h] [-dir DIR] [-r R]
 
 optional arguments:
   -h, --help  show this help message and exit
   -dir DIR    output logs directory
+  -r R        logging rate (hours)
 
 user input:
 

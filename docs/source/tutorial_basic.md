@@ -43,7 +43,7 @@ To convert `.PLW` files to `.TXT` with `plw-player`, you just need to
 have installed `pycotech` and then run the command line `plw-player`
 tool as follows:
 
-```
+```bash
 usage: plw-player [-h] -plw PLW [-txt TXT]
 
 optional arguments:
@@ -75,16 +75,18 @@ To start the data acquisition with `plw-recorder`, you just need to
 have installed `pycotech` and then run the command line tool as 
 follows:
 
-```
-usage: plw-recorder [-h] [-dir DIR]
+```bash
+usage: plw-recorder [-h] [-dir DIR] [-r R]
 
 optional arguments:
   -h, --help  show this help message and exit
-  -dir DIR    output directory
+  -dir DIR    output logs directory
+  -r R        logging rate (hours)
 ```
 
-The utility takes only the optional `-dir` argument, specifying the
-path to the directory in which to save logs. 
+The utility takes two optional arguments: 
+    - `-dir`, the path to the directory in which to save logs 
+    - `-r`, the rate in hours at which to save new log files
 
 Once executed, the command line tool will scan for connected devices
 and ask for permission to launch the data acquisition.
@@ -95,7 +97,7 @@ will need to provide interactively the identifiers for each
 acquisition device. For example, providing the letter *P* will label
 the channels of the given data logger as `P1`, `P2`, ...
 
-Providing custom labels is optional, and only helps maintaining
+Providing custom labels is optional, and only helps to maintain
 consistency with existing data with pre-existing labels. If skipped,
 the channels from different devices will be labelled in alphabetical
 order.  
@@ -115,15 +117,15 @@ faster rates.
 
 Finally, data is periodically batch-logged in `.TXT` files timestamped
 at the date of creation (so with the timestamp of the last log entry).
-For data sampled every three seconds (4 active channels), each log will be 
-generated every 24
-hours. If the script is terminated from the command line,
+For data sampled every three seconds (4 active channels), each log  
+will be generated every `-r` hours. If the script is terminated from  
+the command line,
 `plw-recorder` will make sure that the currently running log is compiled and saved.
 
 The following minimal example will start logging data from available
-data loggers, and save the resulting logs in a `/PycoLogs` folder in 
-the current working directory:
+data loggers, and save the resulting logs every 4 hours in a default 
+`/PycoLogs` folder in the current working directory:
 
 ```bash
-$ plw-recorder
+$ plw-recorder -r 4
 ```

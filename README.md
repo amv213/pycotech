@@ -71,11 +71,12 @@ described above and then run any of the following:
     >```
     
     >```bash
-    >usage: plw-recorder [-h] [-dir DIR]
+    >usage: plw-recorder [-h] [-dir DIR] [-r R]
     >
     >optional arguments:
-    >  -h, --help  show this help message and exit
-    >  -dir DIR    output directory
+    >-h, --help  show this help message and exit
+    >-dir DIR    output logs directory
+    >-r R        logging rate (hours)
     >```
 
 ---
