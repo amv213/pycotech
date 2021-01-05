@@ -13,5 +13,5 @@ public
 /*.egg
 
 # Packaging
-./build
-./dist
+build/
+dist/
