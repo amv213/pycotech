@@ -5,7 +5,7 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setuptools.setup(
     name="pycotech",
-    version="0.0.1",
+    version="0.1.0",
     description="Tools and wrappers to interface with PT-104 PicoLog® Data "
                 "Loggers and files.",
     long_description=long_description,
@@ -14,7 +14,7 @@ setuptools.setup(
     author_email="alvise@vianello.ai",
     url="https://gitlab.com/amv213/pycotech",
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 4 - Beta",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v3 or later " 
         "(GPLv3+)",
