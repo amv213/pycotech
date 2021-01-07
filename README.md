@@ -1,7 +1,5 @@
 # 📑 Welcome to Pycotech!
 
-[![PyPI version](https://badge.fury.io/py/pycotech.png)](https://badge.fury.io/py/pycotech)
-
 `pycotech` offers tools and wrappers to interface with PT-104 PicoLog® Data Loggers and files, allowing you to easily build an end-to-end data processing pipeline in pure python.
   
 This work would not have been possible without **Martin Schröder**'s
